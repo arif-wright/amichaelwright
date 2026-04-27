@@ -37,15 +37,23 @@ const series = [
 ];
 
 const primaryButton =
-  "inline-flex items-center justify-center rounded-sm border border-[#f3c96a] bg-[linear-gradient(180deg,#d8a846,#8d261b_48%,#3a0908)] px-7 py-4 text-sm font-black uppercase tracking-[0.18em] text-[#fff5d6] shadow-[0_0_28px_rgba(143,28,18,0.45),inset_0_1px_0_rgba(255,237,174,0.45)] transition hover:-translate-y-0.5 hover:border-[#ffe19a] hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#f3c96a] focus:ring-offset-2 focus:ring-offset-[#050202]";
+  "stone-button px-7 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#f3c96a] focus:ring-offset-2 focus:ring-offset-[#050202]";
 
 const secondaryButton =
-  "inline-flex items-center justify-center rounded-sm border border-[#8f1c12]/80 bg-black/45 px-7 py-4 text-sm font-black uppercase tracking-[0.18em] text-[#f5dfb4] shadow-[inset_0_0_24px_rgba(143,28,18,0.22)] backdrop-blur transition hover:-translate-y-0.5 hover:border-[#d8a846] hover:bg-[#2a0908]/80 focus:outline-none focus:ring-2 focus:ring-[#d8a846] focus:ring-offset-2 focus:ring-offset-[#050202]";
+  "stone-button stone-button-secondary px-7 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#d8a846] focus:ring-offset-2 focus:ring-offset-[#050202]";
+
+function OrnateDivider() {
+  return (
+    <div className="px-5 sm:px-8 lg:px-12" aria-hidden="true">
+      <div className="ornate-divider" />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#050202] text-[#f7ead1]">
-      <header className="absolute inset-x-0 top-0 z-20 border-b border-[#6e1b12]/60 bg-black/45 px-5 py-4 backdrop-blur-sm sm:px-8 lg:px-12">
+    <main className="site-shell min-h-screen overflow-hidden text-[#f7ead1]">
+      <header className="absolute inset-x-0 top-0 z-20 border-b border-[#34505a]/55 bg-black/55 px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
           <a
             href="#top"
@@ -112,7 +120,7 @@ export default function Home() {
               {["Paperback", "Dark Fantasy", "Book One"].map((tag) => (
                 <span
                   key={tag}
-                  className="border border-[#6e1b12] bg-black/45 px-3 py-2 shadow-[inset_0_0_18px_rgba(143,28,18,0.18)]"
+                  className="rune-chip px-3 py-2"
                 >
                   {tag}
                 </span>
@@ -121,7 +129,7 @@ export default function Home() {
           </div>
 
           <div className="mx-auto w-full max-w-sm lg:max-w-md">
-            <div className="relative border border-[#8f1c12] bg-[#090403] p-3 shadow-[0_0_60px_rgba(143,28,18,0.38)]">
+            <div className="stone-panel relative p-3 shadow-[0_0_60px_rgba(143,28,18,0.38)]">
               <div className="absolute -inset-5 -z-10 bg-[#8f1c12]/20 blur-3xl" />
               <img
                 src={bookCover}
@@ -133,9 +141,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="book" className="px-5 py-20 sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-6xl gap-12 border-y border-[#6e1b12]/70 bg-[linear-gradient(180deg,rgba(29,8,7,0.78),rgba(8,3,3,0.94))] px-5 py-16 shadow-[inset_0_1px_0_rgba(243,201,106,0.12)] lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:px-8">
-          <div className="max-w-xs border border-[#2b0b08] bg-black/35 p-2">
+      <OrnateDivider />
+
+      <section id="book" className="stone-bg px-5 py-20 sm:px-8 lg:px-12">
+        <div className="stone-panel mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:px-8">
+          <div className="max-w-xs border border-[#34505a]/70 bg-black/40 p-2 shadow-[0_0_0_3px_rgba(0,0,0,0.55)]">
             <img
               src={bookCover}
               alt="The Shattered Pact paperback cover"
@@ -159,7 +169,7 @@ export default function Home() {
               {readerHooks.map((hook) => (
                 <div
                   key={hook}
-                  className="border border-[#6e1b12]/75 bg-black/30 px-4 py-4 text-sm font-semibold leading-6 text-[#d9cdb9] shadow-[inset_0_0_22px_rgba(143,28,18,0.12)] transition hover:border-[#d8a846]/70 hover:bg-[#2a0908]/45"
+                  className="rune-chip px-4 py-4 text-sm font-semibold leading-6 text-[#d9cdb9] transition hover:border-[#d8a846]/70 hover:bg-[#2a0908]/45"
                 >
                   {hook}
                 </div>
@@ -172,12 +182,14 @@ export default function Home() {
         </div>
       </section>
 
+      <OrnateDivider />
+
       <section className="px-5 py-14 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2">
           {readerSignals.map((signal) => (
             <article
               key={signal.label}
-              className="border border-[#6e1b12]/80 bg-[linear-gradient(180deg,#120605,#070303)] p-6 shadow-[inset_0_1px_0_rgba(243,201,106,0.1)]"
+              className="stone-panel p-6"
             >
               <h2 className="font-serif text-2xl leading-9 text-[#fff1c5]">
                 {signal.title}
@@ -190,8 +202,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="excerpt" className="px-5 py-20 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-4xl border-y border-[#6e1b12]/70 py-16">
+      <OrnateDivider />
+
+      <section id="excerpt" className="stone-bg px-5 py-20 sm:px-8 lg:px-12">
+        <div className="stone-panel mx-auto max-w-4xl px-6 py-16 sm:px-10">
           <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
             A Glimpse Inside
           </p>
@@ -221,8 +235,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="signup" className="px-5 py-20 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-4xl border border-[#8f1c12]/90 bg-[linear-gradient(180deg,rgba(42,9,8,0.92),rgba(8,3,3,0.96))] p-6 shadow-[0_0_60px_rgba(143,28,18,0.24),inset_0_1px_0_rgba(243,201,106,0.14)] sm:p-10">
+      <OrnateDivider />
+
+      <section id="signup" className="leather-bg px-5 py-20 sm:px-8 lg:px-12">
+        <div className="stone-panel mx-auto max-w-4xl p-6 sm:p-10">
           <h2 className="font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
             Get exclusive lore, updates, and early access to Book 2
           </h2>
@@ -251,9 +267,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="series" className="px-5 py-20 sm:px-8 lg:px-12">
+      <OrnateDivider />
+
+      <section id="series" className="stone-bg px-5 py-20 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+          <div className="stone-panel p-6 sm:p-8">
             <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
               About the Author
             </p>
@@ -266,7 +284,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div>
+          <div className="stone-panel p-6 sm:p-8">
             <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
               The Series
             </p>
@@ -292,8 +310,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-5 pb-20 pt-8 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-6xl border border-[#d8a846]/35 bg-[linear-gradient(135deg,rgba(216,168,70,0.13),rgba(143,28,18,0.22),rgba(0,0,0,0.18))] px-6 py-10 text-center shadow-[inset_0_1px_0_rgba(243,201,106,0.18)] sm:px-10">
+      <OrnateDivider />
+
+      <section className="leather-bg px-5 pb-20 pt-14 sm:px-8 lg:px-12">
+        <div className="stone-panel mx-auto max-w-6xl px-6 py-10 text-center sm:px-10">
           <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
             Begin Book One
           </p>

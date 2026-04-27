@@ -37,10 +37,10 @@ const series = [
 ];
 
 const primaryButton =
-  "stone-button min-w-56 px-8 py-4 text-center text-sm focus:outline-none focus:ring-2 focus:ring-[#f3c96a] focus:ring-offset-2 focus:ring-offset-[#050202]";
+  "stone-button min-w-52 px-6 py-4 text-center text-xs focus:outline-none focus:ring-2 focus:ring-[#f3c96a] focus:ring-offset-2 focus:ring-offset-[#050202]";
 
 const secondaryButton =
-  "stone-button stone-button-secondary min-w-56 px-8 py-4 text-center text-sm focus:outline-none focus:ring-2 focus:ring-[#d8a846] focus:ring-offset-2 focus:ring-offset-[#050202]";
+  "stone-button stone-button-secondary min-w-52 px-6 py-4 text-center text-xs focus:outline-none focus:ring-2 focus:ring-[#d8a846] focus:ring-offset-2 focus:ring-offset-[#050202]";
 
 function OrnateDivider() {
   return (
@@ -112,7 +112,7 @@ export default function Home() {
               An epic dark fantasy about a fractured world and the forces
               awakening beneath it.
             </p>
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-9 flex flex-col gap-6 sm:flex-row sm:gap-8">
               <a href={amazonLink} className={primaryButton}>
                 Buy on Amazon
               </a>

@@ -44,8 +44,12 @@ const secondaryButton =
 
 function OrnateDivider() {
   return (
-    <div className="px-5 sm:px-8 lg:px-12" aria-hidden="true">
-      <div className="ornate-divider" />
+    <div className="divider-frame px-5 sm:px-8 lg:px-12" aria-hidden="true">
+      <img
+        src="/images/divider.png"
+        alt=""
+        className="mx-auto h-auto w-full max-w-6xl object-contain"
+      />
     </div>
   );
 }

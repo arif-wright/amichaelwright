@@ -36,101 +36,97 @@ const series = [
   },
 ];
 
+const primaryButton =
+  "inline-flex items-center justify-center rounded-sm border border-[#f3c96a] bg-[linear-gradient(180deg,#d8a846,#8d261b_48%,#3a0908)] px-7 py-4 text-sm font-black uppercase tracking-[0.18em] text-[#fff5d6] shadow-[0_0_28px_rgba(143,28,18,0.45),inset_0_1px_0_rgba(255,237,174,0.45)] transition hover:-translate-y-0.5 hover:border-[#ffe19a] hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#f3c96a] focus:ring-offset-2 focus:ring-offset-[#050202]";
+
+const secondaryButton =
+  "inline-flex items-center justify-center rounded-sm border border-[#8f1c12]/80 bg-black/45 px-7 py-4 text-sm font-black uppercase tracking-[0.18em] text-[#f5dfb4] shadow-[inset_0_0_24px_rgba(143,28,18,0.22)] backdrop-blur transition hover:-translate-y-0.5 hover:border-[#d8a846] hover:bg-[#2a0908]/80 focus:outline-none focus:ring-2 focus:ring-[#d8a846] focus:ring-offset-2 focus:ring-offset-[#050202]";
+
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#050308] text-stone-100">
-      <header className="absolute inset-x-0 top-0 z-20 px-5 py-5 sm:px-8 lg:px-12">
+    <main className="min-h-screen overflow-hidden bg-[#050202] text-[#f7ead1]">
+      <header className="absolute inset-x-0 top-0 z-20 border-b border-[#6e1b12]/60 bg-black/45 px-5 py-4 backdrop-blur-sm sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
           <a
             href="#top"
-            className="font-serif text-lg font-semibold text-white transition hover:text-[#d9b566]"
+            className="font-serif text-lg font-semibold uppercase tracking-[0.18em] text-[#f6d98d] transition hover:text-white"
           >
             A. Michael Wright
           </a>
           <nav
             aria-label="Primary navigation"
-            className="hidden items-center gap-6 text-sm font-semibold uppercase tracking-[0.16em] text-stone-300 sm:flex"
+            className="hidden items-center gap-6 text-xs font-black uppercase tracking-[0.18em] text-[#d9c39b] sm:flex"
           >
-            <a className="transition hover:text-[#d9b566]" href="#book">
-              Book
-            </a>
-            <a className="transition hover:text-[#d9b566]" href="#excerpt">
-              Excerpt
-            </a>
-            <a className="transition hover:text-[#d9b566]" href="#signup">
-              Updates
-            </a>
-            <a className="transition hover:text-[#d9b566]" href="#series">
-              Series
-            </a>
+            {["Book", "Excerpt", "Updates", "Series"].map((item) => (
+              <a
+                key={item}
+                className="transition hover:text-[#f3c96a]"
+                href={`#${item === "Updates" ? "signup" : item.toLowerCase()}`}
+              >
+                {item}
+              </a>
+            ))}
           </nav>
         </div>
       </header>
 
       <section
         id="top"
-        className="relative isolate flex min-h-[92vh] items-center px-5 py-24 sm:px-8 lg:px-12"
+        className="relative isolate flex min-h-screen items-center px-5 py-28 sm:px-8 lg:px-12"
       >
-        <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_18%,rgba(111,53,170,0.34),transparent_34%),linear-gradient(180deg,rgba(5,3,8,0.35),#050308_88%)]" />
+        <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_50%_48%,rgba(221,86,32,0.25),transparent_28%),radial-gradient(circle_at_18%_22%,rgba(111,19,15,0.55),transparent_30%),linear-gradient(180deg,rgba(5,2,2,0.18),#050202_92%)]" />
         <div
-          className="absolute inset-0 -z-30 bg-cover bg-center opacity-32"
+          className="absolute inset-0 -z-30 bg-cover bg-center opacity-40 saturate-125"
           style={{
             backgroundImage: `url('${heroImage}')`,
           }}
           aria-hidden="true"
         />
-        <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-[#050308] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-t from-[#050202] to-transparent" />
 
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
           <div className="max-w-3xl">
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.28em] text-[#d9b566]">
+            <p className="mb-5 text-sm font-black uppercase tracking-[0.34em] text-[#d8a846]">
               The Wellspring Saga begins
             </p>
-            <p className="font-serif text-3xl font-semibold leading-none text-white sm:text-5xl">
+            <p className="font-serif text-4xl font-semibold uppercase leading-none text-[#fff1c5] drop-shadow-[0_0_20px_rgba(216,168,70,0.22)] sm:text-6xl">
               The Shattered Pact
             </p>
-            <h1 className="mt-5 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-7xl">
+            <h1 className="mt-6 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-7xl">
               The world was never meant to breathe. When it finally does... it
               begins to break.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-200 sm:text-xl">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d9cdb9] sm:text-xl">
               An epic dark fantasy about a fractured world and the forces
               awakening beneath it.
             </p>
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <a
-                href={amazonLink}
-                className="inline-flex items-center justify-center rounded border border-[#f4d48b] bg-[#d9b566] px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-[#120813] shadow-[0_0_36px_rgba(217,181,102,0.28)] transition hover:-translate-y-0.5 hover:bg-[#f1cf7a] focus:outline-none focus:ring-2 focus:ring-[#f4d48b] focus:ring-offset-2 focus:ring-offset-[#050308]"
-              >
+              <a href={amazonLink} className={primaryButton}>
                 Buy on Amazon
               </a>
-              <a
-                href="#signup"
-                className="inline-flex items-center justify-center rounded border border-white/18 bg-white/7 px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-[#a56cff] hover:bg-[#6f35aa]/30 focus:outline-none focus:ring-2 focus:ring-[#a56cff] focus:ring-offset-2 focus:ring-offset-[#050308]"
-              >
+              <a href="#signup" className={secondaryButton}>
                 Join the List
               </a>
             </div>
-            <div className="mt-8 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-stone-300">
-              <span className="border border-white/14 bg-black/25 px-3 py-2">
-                Paperback
-              </span>
-              <span className="border border-white/14 bg-black/25 px-3 py-2">
-                Dark Fantasy
-              </span>
-              <span className="border border-white/14 bg-black/25 px-3 py-2">
-                Book One
-              </span>
+            <div className="mt-8 flex flex-wrap gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#d9c39b]">
+              {["Paperback", "Dark Fantasy", "Book One"].map((tag) => (
+                <span
+                  key={tag}
+                  className="border border-[#6e1b12] bg-black/45 px-3 py-2 shadow-[inset_0_0_18px_rgba(143,28,18,0.18)]"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
 
           <div className="mx-auto w-full max-w-sm lg:max-w-md">
-            <div className="relative">
-              <div className="absolute -inset-4 rounded bg-[#6f35aa]/22 blur-3xl" />
+            <div className="relative border border-[#8f1c12] bg-[#090403] p-3 shadow-[0_0_60px_rgba(143,28,18,0.38)]">
+              <div className="absolute -inset-5 -z-10 bg-[#8f1c12]/20 blur-3xl" />
               <img
                 src={bookCover}
                 alt="Book cover for The Shattered Pact"
-                className="relative aspect-[2/3] w-full rounded object-cover shadow-2xl ring-1 ring-[#d9b566]/45"
+                className="aspect-[2/3] w-full object-cover shadow-2xl ring-1 ring-[#f3c96a]/45"
               />
             </div>
           </div>
@@ -138,22 +134,22 @@ export default function Home() {
       </section>
 
       <section id="book" className="px-5 py-20 sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-6xl gap-12 border-y border-white/10 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div className="max-w-xs">
+        <div className="mx-auto grid max-w-6xl gap-12 border-y border-[#6e1b12]/70 bg-[linear-gradient(180deg,rgba(29,8,7,0.78),rgba(8,3,3,0.94))] px-5 py-16 shadow-[inset_0_1px_0_rgba(243,201,106,0.12)] lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:px-8">
+          <div className="max-w-xs border border-[#2b0b08] bg-black/35 p-2">
             <img
               src={bookCover}
               alt="The Shattered Pact paperback cover"
-              className="aspect-[2/3] w-full rounded object-cover shadow-xl ring-1 ring-white/15"
+              className="aspect-[2/3] w-full object-cover shadow-xl ring-1 ring-[#f3c96a]/20"
             />
           </div>
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#d9b566]">
+            <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
               Book One
             </p>
-            <h2 className="mt-4 font-serif text-3xl font-semibold text-white sm:text-5xl">
+            <h2 className="mt-4 font-serif text-3xl font-semibold uppercase text-[#fff1c5] sm:text-5xl">
               The Shattered Pact
             </h2>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-stone-300">
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#d9cdb9]">
               Riven is the only one who survived something he shouldn&apos;t
               have. As reality begins to fracture, he&apos;s pulled into a
               conflict older than creation itself. He may not be the one meant
@@ -163,16 +159,13 @@ export default function Home() {
               {readerHooks.map((hook) => (
                 <div
                   key={hook}
-                  className="border border-white/10 bg-white/[0.03] px-4 py-4 text-sm leading-6 text-stone-300 transition hover:border-[#d9b566]/45 hover:bg-[#d9b566]/5"
+                  className="border border-[#6e1b12]/75 bg-black/30 px-4 py-4 text-sm font-semibold leading-6 text-[#d9cdb9] shadow-[inset_0_0_22px_rgba(143,28,18,0.12)] transition hover:border-[#d8a846]/70 hover:bg-[#2a0908]/45"
                 >
                   {hook}
                 </div>
               ))}
             </div>
-            <a
-              href={amazonLink}
-              className="mt-8 inline-flex items-center justify-center rounded border border-[#f4d48b] bg-[#d9b566] px-6 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[#120813] transition hover:-translate-y-0.5 hover:bg-[#f1cf7a] focus:outline-none focus:ring-2 focus:ring-[#f4d48b] focus:ring-offset-2 focus:ring-offset-[#050308]"
-            >
+            <a href={amazonLink} className={`${primaryButton} mt-8`}>
               Buy Paperback on Amazon
             </a>
           </div>
@@ -184,12 +177,12 @@ export default function Home() {
           {readerSignals.map((signal) => (
             <article
               key={signal.label}
-              className="border border-white/10 bg-[#0b0710] p-6"
+              className="border border-[#6e1b12]/80 bg-[linear-gradient(180deg,#120605,#070303)] p-6 shadow-[inset_0_1px_0_rgba(243,201,106,0.1)]"
             >
-              <h2 className="font-serif text-2xl leading-9 text-white">
+              <h2 className="font-serif text-2xl leading-9 text-[#fff1c5]">
                 {signal.title}
               </h2>
-              <p className="mt-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#d9b566]">
+              <p className="mt-5 text-sm font-black uppercase tracking-[0.2em] text-[#d8a846]">
                 {signal.label}
               </p>
             </article>
@@ -198,14 +191,14 @@ export default function Home() {
       </section>
 
       <section id="excerpt" className="px-5 py-20 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-4xl border-y border-white/10 py-16">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#d9b566]">
+        <div className="mx-auto max-w-4xl border-y border-[#6e1b12]/70 py-16">
+          <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
             A Glimpse Inside
           </p>
-          <h2 className="mt-4 font-serif text-3xl font-semibold text-white sm:text-4xl">
+          <h2 className="mt-4 font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
             The mark on Riven&apos;s arm has never stopped burning.
           </h2>
-          <div className="mt-8 space-y-5 text-lg leading-8 text-stone-300">
+          <div className="mt-8 space-y-5 text-lg leading-8 text-[#d9cdb9]">
             <p>
               He has spent seventeen years pretending it isn&apos;t there,
               pretending the light that bends wrong near his skin is nothing,
@@ -222,21 +215,18 @@ export default function Home() {
               holding reality together decide they are done?
             </p>
           </div>
-          <a
-            href={amazonLink}
-            className="mt-8 inline-flex items-center justify-center rounded border border-[#f4d48b] bg-[#d9b566] px-6 py-3 text-sm font-bold uppercase tracking-[0.16em] text-[#120813] transition hover:-translate-y-0.5 hover:bg-[#f1cf7a] focus:outline-none focus:ring-2 focus:ring-[#f4d48b] focus:ring-offset-2 focus:ring-offset-[#050308]"
-          >
+          <a href={amazonLink} className={`${primaryButton} mt-8`}>
             Read on Amazon
           </a>
         </div>
       </section>
 
       <section id="signup" className="px-5 py-20 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-4xl rounded border border-[#6f35aa]/45 bg-[#120813]/72 p-6 shadow-[0_0_60px_rgba(111,53,170,0.22)] sm:p-10">
-          <h2 className="font-serif text-3xl font-semibold text-white sm:text-4xl">
+        <div className="mx-auto max-w-4xl border border-[#8f1c12]/90 bg-[linear-gradient(180deg,rgba(42,9,8,0.92),rgba(8,3,3,0.96))] p-6 shadow-[0_0_60px_rgba(143,28,18,0.24),inset_0_1px_0_rgba(243,201,106,0.14)] sm:p-10">
+          <h2 className="font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
             Get exclusive lore, updates, and early access to Book 2
           </h2>
-          <p className="mt-4 max-w-2xl leading-7 text-stone-300">
+          <p className="mt-4 max-w-2xl leading-7 text-[#d9cdb9]">
             Step closer to the fracture: new chapters, launch news, and
             behind-the-scenes notes from the Wellspring Saga.
           </p>
@@ -251,13 +241,10 @@ export default function Home() {
               name="email"
               type="email"
               placeholder="you@example.com"
-              className="min-h-12 rounded border border-white/15 bg-black/35 px-4 text-white outline-none transition placeholder:text-stone-500 focus:border-[#d9b566] focus:ring-2 focus:ring-[#d9b566]/35"
+              className="min-h-12 rounded-sm border border-[#6e1b12] bg-black/45 px-4 text-[#fff5d6] outline-none transition placeholder:text-[#8d7b62] focus:border-[#f3c96a] focus:ring-2 focus:ring-[#f3c96a]/35"
               required
             />
-            <button
-              type="submit"
-              className="min-h-12 rounded border border-[#a56cff] bg-[#6f35aa] px-6 text-sm font-bold uppercase tracking-[0.16em] text-white transition hover:-translate-y-0.5 hover:bg-[#8147c4] focus:outline-none focus:ring-2 focus:ring-[#a56cff] focus:ring-offset-2 focus:ring-offset-[#120813]"
-            >
+            <button type="submit" className={primaryButton}>
               Join the List
             </button>
           </form>
@@ -267,35 +254,35 @@ export default function Home() {
       <section id="series" className="px-5 py-20 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#d9b566]">
+            <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
               About the Author
             </p>
-            <h2 className="mt-4 font-serif text-3xl font-semibold text-white sm:text-4xl">
+            <h2 className="mt-4 font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
               A. Michael Wright
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-300">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d9cdb9]">
               A. Michael Wright writes epic fantasy exploring the tension
               between order, change, and the forces that shape reality itself.
             </p>
           </div>
 
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#d9b566]">
+            <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
               The Series
             </p>
-            <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
+            <div className="mt-6 divide-y divide-[#6e1b12]/70 border-y border-[#6e1b12]/70">
               {series.map((book) => (
                 <article
                   key={book.title}
                   className="grid gap-3 py-6 sm:grid-cols-[7rem_1fr_auto] sm:items-center"
                 >
-                  <p className="text-sm uppercase tracking-[0.22em] text-stone-500">
+                  <p className="text-sm font-black uppercase tracking-[0.22em] text-[#8d7b62]">
                     {book.label}
                   </p>
-                  <h3 className="font-serif text-2xl font-semibold text-white">
+                  <h3 className="font-serif text-2xl font-semibold text-[#fff1c5]">
                     {book.title}
                   </h3>
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d9b566]">
+                  <p className="text-sm font-black uppercase tracking-[0.18em] text-[#d8a846]">
                     {book.status}
                   </p>
                 </article>
@@ -306,37 +293,34 @@ export default function Home() {
       </section>
 
       <section className="px-5 pb-20 pt-8 sm:px-8 lg:px-12">
-        <div className="mx-auto max-w-6xl border border-[#d9b566]/25 bg-[linear-gradient(135deg,rgba(217,181,102,0.12),rgba(111,53,170,0.12),rgba(0,0,0,0.18))] px-6 py-10 text-center sm:px-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#d9b566]">
+        <div className="mx-auto max-w-6xl border border-[#d8a846]/35 bg-[linear-gradient(135deg,rgba(216,168,70,0.13),rgba(143,28,18,0.22),rgba(0,0,0,0.18))] px-6 py-10 text-center shadow-[inset_0_1px_0_rgba(243,201,106,0.18)] sm:px-10">
+          <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
             Begin Book One
           </p>
-          <h2 className="mx-auto mt-4 max-w-3xl font-serif text-3xl font-semibold text-white sm:text-5xl">
+          <h2 className="mx-auto mt-4 max-w-3xl font-serif text-3xl font-semibold text-[#fff1c5] sm:text-5xl">
             Enter the fracture before it spreads.
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl leading-7 text-stone-300">
+          <p className="mx-auto mt-5 max-w-2xl leading-7 text-[#d9cdb9]">
             Start The Wellspring Saga with The Shattered Pact, available now in
             paperback on Amazon.
           </p>
-          <a
-            href={amazonLink}
-            className="mt-8 inline-flex items-center justify-center rounded border border-[#f4d48b] bg-[#d9b566] px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-[#120813] shadow-[0_0_36px_rgba(217,181,102,0.24)] transition hover:-translate-y-0.5 hover:bg-[#f1cf7a] focus:outline-none focus:ring-2 focus:ring-[#f4d48b] focus:ring-offset-2 focus:ring-offset-[#050308]"
-          >
+          <a href={amazonLink} className={`${primaryButton} mt-8`}>
             Buy The Shattered Pact
           </a>
         </div>
       </section>
 
-      <footer className="border-t border-white/10 px-5 py-8 sm:px-8 lg:px-12">
-        <div className="mx-auto flex max-w-6xl flex-col gap-5 text-sm text-stone-400 sm:flex-row sm:items-center sm:justify-between">
+      <footer className="border-t border-[#6e1b12]/70 bg-black/35 px-5 py-8 sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-6xl flex-col gap-5 text-sm text-[#8d7b62] sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} A. Michael Wright</p>
           <nav aria-label="Footer links" className="flex flex-wrap gap-5">
-            <a className="transition hover:text-[#d9b566]" href={amazonLink}>
+            <a className="transition hover:text-[#d8a846]" href={amazonLink}>
               Amazon
             </a>
-            <a className="transition hover:text-[#d9b566]" href={goodreadsLink}>
+            <a className="transition hover:text-[#d8a846]" href={goodreadsLink}>
               Goodreads
             </a>
-            <a className="transition hover:text-[#d9b566]" href="#signup">
+            <a className="transition hover:text-[#d8a846]" href="#signup">
               Email signup
             </a>
           </nav>

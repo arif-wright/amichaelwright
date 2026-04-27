@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Dark fantasy hero background placeholder</title>
+  <desc id="desc">A moody fantasy landscape placeholder with purple shadows and golden light.</desc>
+  <defs>
+    <radialGradient id="light" cx="50%" cy="55%" r="34%">
+      <stop offset="0%" stop-color="#f3d48c" stop-opacity="0.85"/>
+      <stop offset="48%" stop-color="#6f35aa" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#050308" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#020106"/>
+      <stop offset="50%" stop-color="#160921"/>
+      <stop offset="100%" stop-color="#050308"/>
+    </linearGradient>
+  </defs>
+  <rect width="1800" height="1200" fill="url(#sky)"/>
+  <circle cx="900" cy="620" r="560" fill="url(#light)"/>
+  <path d="M0 820 L230 510 L420 770 L650 430 L900 830 L1120 470 L1340 765 L1570 500 L1800 820 L1800 1200 L0 1200Z" fill="#08070c"/>
+  <path d="M0 925 C330 830 470 890 720 835 C940 786 1100 840 1300 800 C1530 754 1660 810 1800 760 L1800 1200 L0 1200Z" fill="#050308"/>
+  <path d="M890 390 C820 560 830 710 900 870 C970 710 980 560 910 390Z" fill="none" stroke="#d9b566" stroke-width="9" stroke-opacity="0.45"/>
+  <path d="M760 760 C850 700 960 700 1045 760" fill="none" stroke="#d9b566" stroke-width="7" stroke-opacity="0.35"/>
+  <path d="M180 250 C310 290 420 270 540 210" fill="none" stroke="#a56cff" stroke-width="5" stroke-opacity="0.25"/>
+  <path d="M1250 235 C1390 292 1535 280 1650 220" fill="none" stroke="#a56cff" stroke-width="5" stroke-opacity="0.22"/>
+</svg>

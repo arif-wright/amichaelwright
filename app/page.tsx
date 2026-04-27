@@ -1,7 +1,7 @@
 const amazonLink = "https://www.amazon.com/"; // TODO: Replace with your final Amazon book link.
 const goodreadsLink = "https://www.goodreads.com/"; // TODO: Replace with your Goodreads author or book link.
-const bookCover =
-  "https://placehold.co/640x960/09060f/d9b566?text=The%20Shattered%20Pact"; // TODO: Replace with your real book cover image URL or local /public cover path.
+const bookCover = "/images/Book%201.png"; // TODO: Rename/update this path if you change the cover filename in public/images.
+const heroImage = "/images/hero-bg-placeholder.svg"; // TODO: Replace with a cinematic hero image in public/images if desired.
 
 const series = [
   {
@@ -24,8 +24,7 @@ export default function Home() {
         <div
           className="absolute inset-0 -z-30 bg-cover bg-center opacity-32"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=1800&q=80')",
+            backgroundImage: `url('${heroImage}')`,
           }}
           aria-hidden="true"
         />

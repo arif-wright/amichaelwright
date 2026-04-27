@@ -131,8 +131,8 @@ body {
     letter-spacing: 0.18em;
     text-transform: uppercase;
     transition:
-      transform 180ms ease,
-      filter 180ms ease;
+      transform 220ms ease-out,
+      filter 220ms ease-out;
   }
 
   .stone-button::before {
@@ -156,7 +156,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    transition: opacity 180ms ease;
+    transition: opacity 220ms ease-out;
   }
 
   .stone-button:hover {

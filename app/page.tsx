@@ -1,4 +1,4 @@
-const amazonLink = "https://www.amazon.com/"; // TODO: Replace with your final Amazon book link.
+const amazonLink = "https://www.amazon.com/dp/B0GXPLPBRY";
 const goodreadsLink = "https://www.goodreads.com/"; // TODO: Replace with your Goodreads author or book link.
 const bookCover = "/images/Book%201.png"; // TODO: Rename/update this path if you change the cover filename in public/images.
 const heroImage = "/images/hero-bg-placeholder.svg"; // TODO: Replace with a cinematic hero image in public/images if desired.

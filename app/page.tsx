@@ -37,10 +37,10 @@ const series = [
 ];
 
 const primaryButton =
-  "stone-button px-7 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#f3c96a] focus:ring-offset-2 focus:ring-offset-[#050202]";
+  "stone-button min-w-56 px-8 py-4 text-center text-sm focus:outline-none focus:ring-2 focus:ring-[#f3c96a] focus:ring-offset-2 focus:ring-offset-[#050202]";
 
 const secondaryButton =
-  "stone-button stone-button-secondary px-7 py-4 text-sm focus:outline-none focus:ring-2 focus:ring-[#d8a846] focus:ring-offset-2 focus:ring-offset-[#050202]";
+  "stone-button stone-button-secondary min-w-56 px-8 py-4 text-center text-sm focus:outline-none focus:ring-2 focus:ring-[#d8a846] focus:ring-offset-2 focus:ring-offset-[#050202]";
 
 function OrnateDivider() {
   return (

@@ -53,6 +53,7 @@ body {
   }
 
   .stone-bg {
+    position: relative;
     background:
       radial-gradient(ellipse at 18% 20%, rgba(255, 255, 255, 0.06), transparent 18rem),
       radial-gradient(ellipse at 82% 72%, rgba(143, 28, 18, 0.16), transparent 19rem),
@@ -63,6 +64,7 @@ body {
   }
 
   .leather-bg {
+    position: relative;
     background:
       radial-gradient(circle at 20% 20%, rgba(216, 168, 70, 0.08), transparent 15rem),
       radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.42), transparent 18rem),
@@ -70,6 +72,33 @@ body {
       repeating-linear-gradient(37deg, rgba(255, 255, 255, 0.023) 0 1px, transparent 1px 9px),
       repeating-linear-gradient(103deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 14px),
       linear-gradient(180deg, #34110d 0%, #170706 58%, #080303 100%);
+  }
+
+  .stone-bg::before,
+  .leather-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.92) 0%,
+        rgba(0, 0, 0, 0.74) 10%,
+        rgba(0, 0, 0, 0.18) 24%,
+        rgba(0, 0, 0, 0) 36%,
+        rgba(0, 0, 0, 0) 64%,
+        rgba(0, 0, 0, 0.18) 76%,
+        rgba(0, 0, 0, 0.74) 90%,
+        rgba(0, 0, 0, 0.92) 100%
+      );
+    z-index: 0;
+  }
+
+  .stone-bg > *,
+  .leather-bg > * {
+    position: relative;
+    z-index: 1;
   }
 
   .stone-panel {
@@ -174,36 +203,33 @@ body {
 
   .divider-frame {
     position: relative;
-    margin: -1.5rem 0;
-    padding-block: clamp(0.2rem, 0.9vw, 0.8rem);
+    height: 80px;
+    margin: -0.25rem 0;
     background:
-      linear-gradient(90deg, #050202 0%, rgba(5, 2, 2, 0.76) 12%, rgba(5, 2, 2, 0.18) 32%, rgba(5, 2, 2, 0.18) 68%, rgba(5, 2, 2, 0.76) 88%, #050202 100%),
+      linear-gradient(
+        90deg,
+        #050202 0%,
+        rgba(5, 2, 2, 0.94) 11%,
+        rgba(5, 2, 2, 0.32) 25%,
+        rgba(5, 2, 2, 0.04) 36%,
+        rgba(5, 2, 2, 0.04) 64%,
+        rgba(5, 2, 2, 0.32) 75%,
+        rgba(5, 2, 2, 0.94) 89%,
+        #050202 100%
+      ),
       radial-gradient(ellipse at 50% 50%, rgba(82, 103, 101, 0.18), transparent 44rem);
   }
 
-  .divider-frame::before,
-  .divider-frame::after {
+  .divider-frame::before {
     content: "";
     position: absolute;
-    inset-block: 0;
-    width: 18vw;
+    inset: 0;
+    background-image: url("/images/divider-3.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: min(100%, 1920px) 80px;
     pointer-events: none;
     z-index: 1;
-  }
-
-  .divider-frame::before {
-    left: 0;
-    background: linear-gradient(90deg, #050202, transparent);
-  }
-
-  .divider-frame::after {
-    right: 0;
-    background: linear-gradient(270deg, #050202, transparent);
-  }
-
-  .divider-frame img {
-    display: block;
-    opacity: 0.92;
     filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.9));
   }
 

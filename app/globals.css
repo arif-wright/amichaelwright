@@ -270,6 +270,18 @@ body {
     z-index: 0;
   }
 
+  .author-copy {
+    hyphens: auto;
+    overflow-wrap: break-word;
+    text-align: justify;
+    text-align-last: left;
+    text-justify: inter-word;
+  }
+
+  .author-copy p:first-child {
+    text-align: left;
+  }
+
   .excerpt-prose p:first-child::first-letter {
     float: left;
     padding-right: 0.12em;

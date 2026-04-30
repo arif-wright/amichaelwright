@@ -1,46 +1,20 @@
-const amazonLink = "https://www.amazon.com/dp/B0GXPLPBRY";
-const goodreadsLink = "https://www.goodreads.com/"; // TODO: Replace with your Goodreads author or book link.
-const bookCover = "/images/Book%201.png"; // TODO: Rename/update this path if you change the cover filename in public/images.
-const heroImage = "/images/hero.png"; // TODO: Rename/update this path if you change the hero filename in public/images.
-
-const readerHooks = [
-  "A survivor marked by something impossible",
-  "Ancient forces moving beneath reality",
-  "Epic stakes with a dark mythic edge",
-  "A fractured world where creation itself has a memory",
-];
-
-const readerSignals = [
-  {
-    title:
-      "For readers who want their fantasy vast, strange, and edged with dread.",
-    label: "Epic dark fantasy",
-  },
-  {
-    title:
-      "Book One of a growing saga built around mystery, consequence, and old powers waking.",
-    label: "The Wellspring Saga",
-  },
-];
-
-const series = [
-  {
-    label: "Book 1",
-    title: "The Shattered Pact",
-    status: "Available now",
-  },
-  {
-    label: "Book 2",
-    title: "The Fracture of Worlds",
-    status: "Coming soon",
-  },
-];
-
-const primaryButton =
-  "stone-button min-w-52 px-6 py-4 text-center text-xs focus:outline-none focus:ring-2 focus:ring-[#f3c96a] focus:ring-offset-2 focus:ring-offset-[#050202]";
-
-const secondaryButton =
-  "stone-button stone-button-secondary min-w-52 px-6 py-4 text-center text-xs focus:outline-none focus:ring-2 focus:ring-[#d8a846] focus:ring-offset-2 focus:ring-offset-[#050202]";
+import {
+  amazonLink,
+  authorName,
+  bookCover,
+  bookTitle,
+  excerptParagraphs,
+  formatOptions,
+  goodreadsLink,
+  heroImage,
+  primaryButton,
+  readerHooks,
+  readerSignals,
+  secondaryButton,
+  series,
+  seriesName,
+  socialProof,
+} from "./site-data";
 
 function OrnateDivider() {
   return (
@@ -57,7 +31,7 @@ export default function Home() {
             href="#top"
             className="font-serif text-lg font-semibold uppercase tracking-[0.18em] text-[#f6d98d] transition hover:text-white"
           >
-            A. Michael Wright
+            {authorName}
           </a>
           <nav
             aria-label="Primary navigation"
@@ -67,11 +41,21 @@ export default function Home() {
               <a
                 key={item}
                 className="transition hover:text-[#f3c96a]"
-                href={`#${item === "Updates" ? "signup" : item.toLowerCase()}`}
+                href={
+                  item === "Excerpt"
+                    ? "/excerpt"
+                    : `#${item === "Updates" ? "signup" : item.toLowerCase()}`
+                }
               >
                 {item}
               </a>
             ))}
+            <a
+              className="transition hover:text-[#f3c96a]"
+              href={goodreadsLink}
+            >
+              Goodreads
+            </a>
           </nav>
         </div>
       </header>
@@ -93,18 +77,18 @@ export default function Home() {
         <div className="mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
           <div className="max-w-3xl">
             <p className="mb-5 text-sm font-black uppercase tracking-[0.34em] text-[#d8a846]">
-              The Wellspring Saga begins
+              {seriesName} begins
             </p>
-            <p className="font-serif text-4xl font-semibold uppercase leading-none text-[#fff1c5] drop-shadow-[0_0_20px_rgba(216,168,70,0.22)] sm:text-6xl">
-              The Shattered Pact
-            </p>
-            <h1 className="mt-6 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-7xl">
+            <h1 className="font-serif text-5xl font-semibold uppercase leading-none text-[#fff1c5] drop-shadow-[0_0_20px_rgba(216,168,70,0.22)] sm:text-7xl lg:text-8xl">
+              {bookTitle}
+            </h1>
+            <p className="mt-6 font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-6xl">
               The world was never meant to breathe. When it finally does... it
               begins to break.
-            </h1>
+            </p>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d9cdb9] sm:text-xl">
-              An epic dark fantasy about a fractured world and the forces
-              awakening beneath it.
+              For readers of mythic, high-stakes fantasy where old powers,
+              broken worlds, and impossible survivors collide.
             </p>
             <div className="mt-9 flex flex-col gap-6 sm:flex-row sm:gap-8">
               <a href={amazonLink} className={primaryButton}>
@@ -114,8 +98,16 @@ export default function Home() {
                 Join the List
               </a>
             </div>
+            <div className="mt-7 border-l border-[#d8a846]/60 pl-5">
+              <p className="font-serif text-xl italic leading-8 text-[#fff1c5]">
+                &ldquo;{socialProof.quote}&rdquo;
+              </p>
+              <p className="mt-2 text-xs font-black uppercase tracking-[0.2em] text-[#8d7b62]">
+                {socialProof.attribution}
+              </p>
+            </div>
             <div className="mt-8 flex flex-wrap gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#d9c39b]">
-              {["Paperback", "Dark Fantasy", "Book One"].map((tag) => (
+              {["Amazon", "Paperback", "Dark Fantasy", "Book One"].map((tag) => (
                 <span
                   key={tag}
                   className="rune-chip px-3 py-2"
@@ -124,6 +116,20 @@ export default function Home() {
                 </span>
               ))}
             </div>
+            <nav
+              aria-label="Mobile quick links"
+              className="mt-8 flex flex-wrap gap-4 text-xs font-black uppercase tracking-[0.18em] text-[#d9c39b] sm:hidden"
+            >
+              <a className="transition hover:text-[#f3c96a]" href="#book">
+                Book
+              </a>
+              <a className="transition hover:text-[#f3c96a]" href="/excerpt">
+                Excerpt
+              </a>
+              <a className="transition hover:text-[#f3c96a]" href="#signup">
+                Updates
+              </a>
+            </nav>
           </div>
 
           <div className="mx-auto w-full max-w-sm lg:max-w-md">
@@ -155,7 +161,7 @@ export default function Home() {
               Book One
             </p>
             <h2 className="mt-4 font-serif text-3xl font-semibold uppercase text-[#fff1c5] sm:text-5xl">
-              The Shattered Pact
+              {bookTitle}
             </h2>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#d9cdb9]">
               Riven is the only one who survived something he shouldn&apos;t
@@ -173,8 +179,15 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <div className="mt-8 flex flex-wrap gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#d9c39b]">
+              {formatOptions.map((option) => (
+                <span key={option} className="rune-chip px-3 py-2">
+                  {option}
+                </span>
+              ))}
+            </div>
             <a href={amazonLink} className={`${primaryButton} mt-8`}>
-              Buy Paperback on Amazon
+              Buy on Amazon
             </a>
           </div>
         </div>
@@ -208,27 +221,15 @@ export default function Home() {
             A Glimpse Inside
           </p>
           <h2 className="mt-4 font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
-            The mark on Riven&apos;s arm has never stopped burning.
+            Read the opening pages before you enter the fracture.
           </h2>
           <div className="mt-8 space-y-5 text-lg leading-8 text-[#d9cdb9]">
-            <p>
-              He has spent seventeen years pretending it isn&apos;t there,
-              pretending the light that bends wrong near his skin is nothing,
-              that the hum beneath his feet is imagination.
-            </p>
-            <p>
-              Then the forest stops singing, something older than memory turns
-              its eyes toward him, and Riven&apos;s awakening pulls him toward a
-              war the world was never supposed to remember.
-            </p>
-            <p>
-              The Shattered Pact begins with one impossible survivor and a
-              question no one is ready to answer: what happens when the forces
-              holding reality together decide they are done?
-            </p>
+            {excerptParagraphs.slice(0, 2).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
-          <a href={amazonLink} className={`${primaryButton} mt-8`}>
-            Read on Amazon
+          <a href="/excerpt" className={`${primaryButton} mt-8`}>
+            Read Chapter One
           </a>
         </div>
       </section>
@@ -262,6 +263,10 @@ export default function Home() {
               Join the List
             </button>
           </form>
+          <p className="mt-4 text-sm leading-6 text-[#8d7b62]">
+            About one email a month. No spam, no noise, just book news and
+            saga extras.
+          </p>
         </div>
       </section>
 
@@ -274,12 +279,19 @@ export default function Home() {
               About the Author
             </p>
             <h2 className="mt-4 font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
-              A. Michael Wright
+              {authorName}
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d9cdb9]">
-              A. Michael Wright writes epic fantasy exploring the tension
-              between order, change, and the forces that shape reality itself.
-            </p>
+            <div className="mt-6 grid gap-6 sm:grid-cols-[8rem_1fr] sm:items-start">
+              <div className="author-photo flex aspect-square items-center justify-center border border-[#6e1b12]/70 bg-black/40 font-serif text-4xl text-[#d8a846]">
+                AMW
+              </div>
+              <p className="max-w-2xl text-lg leading-8 text-[#d9cdb9]">
+                A. Michael Wright writes epic fantasy about fragile worlds,
+                buried powers, and the uneasy cost of survival. His stories
+                favor ancient mysteries, characters marked by consequence, and
+                the moment order starts to crack.
+              </p>
+            </div>
           </div>
 
           <div className="stone-panel p-6 sm:p-8">
@@ -319,8 +331,7 @@ export default function Home() {
             Enter the fracture before it spreads.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl leading-7 text-[#d9cdb9]">
-            Start The Wellspring Saga with The Shattered Pact, available now in
-            paperback on Amazon.
+            Start {seriesName} with {bookTitle}, available now on Amazon.
           </p>
           <a href={amazonLink} className={`${primaryButton} mt-8`}>
             Buy The Shattered Pact

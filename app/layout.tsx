@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Inter, Marcellus_SC } from "next/font/google";
 import "./globals.css";
+import { authorName, bookTitle, heroImage } from "./site-data";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -22,29 +23,30 @@ const marcellusSc = Marcellus_SC({
 });
 
 export const metadata: Metadata = {
-  title: "A. Michael Wright | The Shattered Pact",
+  metadataBase: new URL("https://amichaelwright.com"),
+  title: `${authorName} | ${bookTitle}`,
   description:
     "The official author site for A. Michael Wright and The Shattered Pact, an epic dark fantasy novel about a fractured world and the forces awakening beneath it.",
   openGraph: {
-    title: "The Shattered Pact by A. Michael Wright",
+    title: `${bookTitle} by ${authorName}`,
     description:
       "An epic dark fantasy about a fractured world and the forces awakening beneath it.",
     type: "website",
     images: [
       {
-        url: "https://placehold.co/1200x630/12081f/d9b566?text=The+Shattered+Pact",
-        width: 1200,
-        height: 630,
-        alt: "The Shattered Pact by A. Michael Wright",
+        url: heroImage,
+        width: 1456,
+        height: 816,
+        alt: `${bookTitle} by ${authorName}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Shattered Pact by A. Michael Wright",
+    title: `${bookTitle} by ${authorName}`,
     description:
       "An epic dark fantasy about a fractured world and the forces awakening beneath it.",
-    images: ["https://placehold.co/1200x630/12081f/d9b566?text=The+Shattered+Pact"],
+    images: [heroImage],
   },
 };
 

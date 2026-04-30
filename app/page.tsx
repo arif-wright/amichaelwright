@@ -14,6 +14,7 @@ import {
   series,
   seriesName,
 } from "./site-data";
+import NewsletterForm from "./newsletter-form";
 
 function OrnateDivider() {
   return (
@@ -220,23 +221,7 @@ export default function Home() {
             behind-the-scenes notes from the Wellspring Saga.
           </p>
 
-          {/* TODO: Replace this placeholder form with your ConvertKit embed form script/code. */}
-          <form className="mt-8 grid gap-3 sm:grid-cols-[1fr_auto]">
-            <label htmlFor="email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="you@example.com"
-              className="min-h-12 rounded-sm border border-[#6e1b12] bg-black/45 px-4 text-[#fff5d6] outline-none transition placeholder:text-[#8d7b62] focus:border-[#f3c96a] focus:ring-2 focus:ring-[#f3c96a]/35"
-              required
-            />
-            <button type="submit" className={primaryButton}>
-              Join the List
-            </button>
-          </form>
+          <NewsletterForm />
           <p className="mt-4 text-sm leading-6 text-[#8d7b62]">
             About one email a month. No spam, no noise, just book news and
             saga extras.

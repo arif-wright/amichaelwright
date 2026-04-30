@@ -258,10 +258,16 @@ body {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     opacity: 0.5;
     background:
       radial-gradient(circle at 50% 32%, rgba(216, 168, 70, 0.22), transparent 4rem),
       repeating-linear-gradient(118deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 9px);
+  }
+
+  .author-photo img {
+    position: relative;
+    z-index: 0;
   }
 
   .excerpt-prose p:first-child::first-letter {

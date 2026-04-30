@@ -3,6 +3,7 @@ export const goodreadsLink = "https://www.goodreads.com/"; // TODO: Replace with
 
 export const bookCover = "/images/Book%201.png"; // TODO: Rename/update this path if you change the cover filename in public/images.
 export const heroImage = "/images/hero.png"; // TODO: Rename/update this path if you change the hero filename in public/images.
+export const authorImage = "/images/author_profile.png";
 
 export const bookTitle = "The Shattered Pact";
 export const authorName = "A. Michael Wright";
@@ -47,16 +48,16 @@ export const formatOptions = [
   "Audio news via newsletter",
 ];
 
-export const socialProof = {
-  quote:
-    "Advance praise and reader reviews will appear here as they become available.",
-  attribution: "Reader reactions",
-};
-
 export const excerptParagraphs = [
-  "Replace this sample with the first 150 to 250 words of Chapter One. This page is built to give readers a clean, immersive prose sample before they decide whether to buy or join the list.",
-  "The best excerpt will start at the true opening of the book, preserve the novel's exact language, and end on a small hook rather than a full explanation. Readers are trying to hear the voice here, not the pitch.",
-  "Once the final chapter text is ready, paste it into the excerptParagraphs array in app/site-data.ts and the homepage teaser plus excerpt page will update together.",
+  "The morning began as a lie.",
+  "Not a loud one. The sun rose correctly, touching Thornmere's thatched roofs with pale gold. The air smelled of woodsmoke and bread. A cart rattled somewhere below. Normal sounds, arriving in the right order.",
+  "But they didn't land right.",
+  "Riven walked the upper path toward the forest edge, a woven willow basket bumping against his thigh. The motion was rote, but today each step echoed inside his bones with a faint vibration - an almost-musical hum like a plucked string beneath perception. He told himself it was nerves. He'd been telling himself that for a week.",
+  "To anyone watching from the village, he was just part of the landscape: a seventeen-year-old boy in roughspun, tall and lean, moving with the quiet economy of someone who prefers not to be noticed. The orphan Maera had taken in. The boy who gathered herbs for Elder Vella. The quiet shadow at the edge of the feast.",
+  "But Riven was not part of the landscape. He was the only thing in it that didn't fit.",
+  "He adjusted his grip on the basket.",
+  "The silence arrived without warning.",
+  "Not the silence of early morning - that had birds in it, wind, the distant sound of the smith's first hammer. This was something else. A pressure drop, subtle then sharp, settling over the hillside like a held breath. He paused mid-stride. The tall grass still swayed, but the sound of it had been carved out, leaving only the shape of movement without weight.",
 ];
 
 export const primaryButton =

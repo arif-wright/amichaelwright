@@ -1,5 +1,6 @@
 import {
   amazonLink,
+  authorImage,
   authorName,
   bookCover,
   bookTitle,
@@ -13,7 +14,6 @@ import {
   secondaryButton,
   series,
   seriesName,
-  socialProof,
 } from "./site-data";
 
 function OrnateDivider() {
@@ -97,14 +97,6 @@ export default function Home() {
               <a href="#signup" className={secondaryButton}>
                 Join the List
               </a>
-            </div>
-            <div className="mt-7 border-l border-[#d8a846]/60 pl-5">
-              <p className="font-serif text-xl italic leading-8 text-[#fff1c5]">
-                &ldquo;{socialProof.quote}&rdquo;
-              </p>
-              <p className="mt-2 text-xs font-black uppercase tracking-[0.2em] text-[#8d7b62]">
-                {socialProof.attribution}
-              </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#d9c39b]">
               {["Amazon", "Paperback", "Dark Fantasy", "Book One"].map((tag) => (
@@ -282,15 +274,33 @@ export default function Home() {
               {authorName}
             </h2>
             <div className="mt-6 grid gap-6 sm:grid-cols-[8rem_1fr] sm:items-start">
-              <div className="author-photo flex aspect-square items-center justify-center border border-[#6e1b12]/70 bg-black/40 font-serif text-4xl text-[#d8a846]">
-                AMW
+              <div className="author-photo aspect-square border border-[#6e1b12]/70 bg-black/40">
+                <img
+                  src={authorImage}
+                  alt="A. Michael Wright"
+                  className="h-full w-full object-cover"
+                />
               </div>
-              <p className="max-w-2xl text-lg leading-8 text-[#d9cdb9]">
-                A. Michael Wright writes epic fantasy about fragile worlds,
-                buried powers, and the uneasy cost of survival. His stories
-                favor ancient mysteries, characters marked by consequence, and
-                the moment order starts to crack.
-              </p>
+              <div className="max-w-2xl space-y-4 text-lg leading-8 text-[#d9cdb9]">
+                <p>
+                  A. Michael Wright is a storyteller, designer, and habitual
+                  worldbuilder.
+                </p>
+                <p>
+                  His work has always lived somewhere between structure and
+                  imagination: data systems by day, fantasy worlds by night,
+                  with plenty of cooking, winemaking, and side projects in
+                  between. He likes building things from the ground up, whether
+                  that means a website, a game, a recipe, a vineyard dream, or
+                  an entire mythology.
+                </p>
+                <p>
+                  That instinct shapes his fiction: worlds with deep roots,
+                  broken systems, and characters forced to grow when everything
+                  around them begins to change.
+                </p>
+                <p>The Shattered Pact is his debut epic fantasy novel.</p>
+              </div>
             </div>
           </div>
 

@@ -255,7 +255,7 @@ export default function Home() {
             <h2 className="mt-4 font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
               {authorName}
             </h2>
-            <div className="mt-6 max-w-2xl text-lg leading-8 text-[#d9cdb9]">
+            <div className="mt-6 max-w-2xl text-justify text-lg leading-8 text-[#d9cdb9]">
               <div className="author-photo mb-5 aspect-square w-36 border border-[#6e1b12]/70 bg-black/40 sm:float-left sm:mb-3 sm:mr-6">
                 <img
                   src={authorImage}

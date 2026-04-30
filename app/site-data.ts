@@ -42,12 +42,6 @@ export const series = [
   },
 ];
 
-export const formatOptions = [
-  "Paperback available now",
-  "Format details on Amazon",
-  "Audio news via newsletter",
-];
-
 export const excerptParagraphs = [
   "The morning began as a lie.",
   "Not a loud one. The sun rose correctly, touching Thornmere's thatched roofs with pale gold. The air smelled of woodsmoke and bread. A cart rattled somewhere below. Normal sounds, arriving in the right order.",

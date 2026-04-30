@@ -5,7 +5,6 @@ import {
   bookCover,
   bookTitle,
   excerptParagraphs,
-  formatOptions,
   goodreadsLink,
   heroImage,
   primaryButton,
@@ -98,16 +97,6 @@ export default function Home() {
                 Join the List
               </a>
             </div>
-            <div className="mt-8 flex flex-wrap gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#d9c39b]">
-              {["Amazon", "Paperback", "Dark Fantasy", "Book One"].map((tag) => (
-                <span
-                  key={tag}
-                  className="rune-chip px-3 py-2"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
             <nav
               aria-label="Mobile quick links"
               className="mt-8 flex flex-wrap gap-4 text-xs font-black uppercase tracking-[0.18em] text-[#d9c39b] sm:hidden"
@@ -169,13 +158,6 @@ export default function Home() {
                 >
                   {hook}
                 </div>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#d9c39b]">
-              {formatOptions.map((option) => (
-                <span key={option} className="rune-chip px-3 py-2">
-                  {option}
-                </span>
               ))}
             </div>
             <a href={amazonLink} className={`${primaryButton} mt-8`}>

@@ -2,6 +2,7 @@ export const amazonLink = "https://www.amazon.com/dp/B0GXPLPBRY";
 export const goodreadsLink = "https://www.goodreads.com/"; // TODO: Replace with your Goodreads author or book link.
 
 export const bookCover = "/images/Book%201.png"; // TODO: Rename/update this path if you change the cover filename in public/images.
+export const bookTwoCover = "/images/Book%202-2.png";
 export const heroImage = "/images/hero.png"; // TODO: Rename/update this path if you change the hero filename in public/images.
 export const authorImage = "/images/author_profile.png";
 
@@ -34,11 +35,13 @@ export const series = [
     label: "Book 1",
     title: bookTitle,
     status: "Available now",
+    cover: bookCover,
   },
   {
     label: "Book 2",
     title: "The Fracture of Worlds",
     status: "Under KDP review",
+    cover: bookTwoCover,
   },
 ];
 

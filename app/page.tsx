@@ -279,14 +279,21 @@ export default function Home() {
               {series.map((book) => (
                 <article
                   key={book.title}
-                  className="grid gap-3 py-6 sm:grid-cols-[7rem_1fr_auto] sm:items-center"
+                  className="grid gap-4 py-6 sm:grid-cols-[4.5rem_1fr_auto] sm:items-center"
                 >
-                  <p className="text-sm font-black uppercase tracking-[0.22em] text-[#8d7b62]">
-                    {book.label}
-                  </p>
-                  <h3 className="font-serif text-2xl font-semibold text-[#fff1c5]">
-                    {book.title}
-                  </h3>
+                  <img
+                    src={book.cover}
+                    alt={`${book.title} cover`}
+                    className="w-20 border border-[#34505a]/70 object-cover shadow-lg ring-1 ring-[#f3c96a]/20 sm:w-full"
+                  />
+                  <div>
+                    <p className="text-sm font-black uppercase tracking-[0.22em] text-[#8d7b62]">
+                      {book.label}
+                    </p>
+                    <h3 className="mt-2 font-serif text-2xl font-semibold text-[#fff1c5]">
+                      {book.title}
+                    </h3>
+                  </div>
                   <p className="text-sm font-black uppercase tracking-[0.18em] text-[#d8a846]">
                     {book.status}
                   </p>

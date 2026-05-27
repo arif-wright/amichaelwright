@@ -24,7 +24,7 @@ export const readerSignals = [
   },
   {
     title:
-      "Book One of a growing saga built around mystery, consequence, and old powers waking.",
+      "A growing saga built around mystery, consequence, and old powers waking.",
     label: seriesName,
   },
 ];
@@ -38,7 +38,7 @@ export const series = [
   {
     label: "Book 2",
     title: "The Fracture of Worlds",
-    status: "Late 2026",
+    status: "Under KDP review",
   },
 ];
 

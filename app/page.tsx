@@ -214,11 +214,11 @@ export default function Home() {
       <section id="signup" className="leather-bg px-5 py-20 sm:px-8 lg:px-12">
         <div className="stone-panel mx-auto max-w-4xl p-6 sm:p-10">
           <h2 className="font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
-            Get exclusive lore, updates, and early access to Book 2
+            Get exclusive lore, release news, and saga updates
           </h2>
           <p className="mt-4 max-w-2xl leading-7 text-[#d9cdb9]">
-            Step closer to the fracture: new chapters, launch news, and
-            behind-the-scenes notes from the Wellspring Saga.
+            Step closer to the fracture: book news, behind-the-scenes notes,
+            and updates from The Wellspring Saga.
           </p>
 
           <NewsletterForm />
@@ -308,7 +308,8 @@ export default function Home() {
             Enter the fracture before it spreads.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl leading-7 text-[#d9cdb9]">
-            Start {seriesName} with {bookTitle}, available now on Amazon.
+            Start {seriesName} with {bookTitle}, and watch for The Fracture of
+            Worlds soon.
           </p>
           <a href={amazonLink} className={`${primaryButton} mt-8`}>
             Buy The Shattered Pact

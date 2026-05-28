@@ -69,7 +69,9 @@ export default function NewsletterForm() {
         className={primaryButton}
         disabled={formState === "loading"}
       >
-        {formState === "loading" ? "Joining..." : "Join the List"}
+        <span className="stone-button-label">
+          {formState === "loading" ? "Joining..." : "Join the List"}
+        </span>
       </button>
       {message ? (
         <p

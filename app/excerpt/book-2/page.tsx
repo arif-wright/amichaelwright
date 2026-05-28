@@ -73,10 +73,10 @@ export default function BookTwoExcerptPage() {
 
           <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:gap-8">
             <a href={bookTwoAmazonLink} className={primaryButton}>
-              Buy Book Two
+              <span className="stone-button-label">Buy Book Two</span>
             </a>
             <Link href="/#signup" className={secondaryButton}>
-              Join the List
+              <span className="stone-button-label">Join the List</span>
             </Link>
           </div>
         </article>

@@ -103,10 +103,10 @@ export default function Home() {
             </p>
             <div className="mt-9 flex flex-col gap-6 sm:flex-row sm:gap-8">
               <a href={amazonLink} className={primaryButton}>
-                Buy Book One
+                <span className="stone-button-label">Buy Book One</span>
               </a>
               <a href={bookTwoAmazonLink} className={secondaryButton}>
-                Buy Book Two
+                <span className="stone-button-label">Buy Book Two</span>
               </a>
             </div>
             <nav
@@ -183,7 +183,7 @@ export default function Home() {
                     {book.description}
                   </p>
                   <a href={book.link} className={`${primaryButton} mt-auto pt-7`}>
-                    {book.cta}
+                    <span className="stone-button-label">{book.cta}</span>
                   </a>
                   <p className="mt-2 text-xs font-black uppercase tracking-[0.16em] text-[#8d7b62]">
                     {book.formatNote}
@@ -301,7 +301,7 @@ export default function Home() {
                   ))}
                 </div>
                 <a href={sample.href} className={`${primaryButton} mt-7`}>
-                  {sample.cta}
+                  <span className="stone-button-label">{sample.cta}</span>
                 </a>
               </article>
             ))}
@@ -423,10 +423,10 @@ export default function Home() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
             <a href={amazonLink} className={primaryButton}>
-              Buy Book One
+              <span className="stone-button-label">Buy Book One</span>
             </a>
             <a href={bookTwoAmazonLink} className={secondaryButton}>
-              Buy Book Two
+              <span className="stone-button-label">Buy Book Two</span>
             </a>
           </div>
         </div>

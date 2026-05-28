@@ -182,7 +182,7 @@ export default function Home() {
                   <p className="mt-5 text-base leading-7 text-[#d9cdb9]">
                     {book.description}
                   </p>
-                  <a href={book.link} className={`${primaryButton} mt-auto pt-7`}>
+                  <a href={book.link} className={`${primaryButton} mt-auto`}>
                     <span className="stone-button-label">{book.cta}</span>
                   </a>
                   <p className="mt-2 text-xs font-black uppercase tracking-[0.16em] text-[#8d7b62]">

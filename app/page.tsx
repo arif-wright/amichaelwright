@@ -245,12 +245,12 @@ export default function Home() {
           {readerSignals.map((signal) => (
             <article
               key={signal.label}
-              className="stone-panel p-6"
+              className="stone-panel flex min-h-44 flex-col p-6"
             >
               <h2 className="font-serif text-2xl leading-9 text-[#fff1c5]">
                 {signal.title}
               </h2>
-              <p className="mt-5 text-sm font-black uppercase tracking-[0.2em] text-[#d8a846]">
+              <p className="mt-auto pt-5 text-sm font-black uppercase tracking-[0.2em] text-[#d8a846]">
                 {signal.label}
               </p>
             </article>

@@ -2,8 +2,9 @@ import {
   amazonLink,
   authorImage,
   authorName,
-  bookCover,
   bookTitle,
+  bookTwoAmazonLink,
+  bookTwoTitle,
   excerptParagraphs,
   goodreadsLink,
   heroImage,
@@ -15,6 +16,7 @@ import {
   seriesName,
 } from "./site-data";
 import NewsletterForm from "./newsletter-form";
+import StructuredData from "./structured-data";
 
 function OrnateDivider() {
   return (
@@ -25,6 +27,7 @@ function OrnateDivider() {
 export default function Home() {
   return (
     <main className="site-shell min-h-screen overflow-hidden text-[#f7ead1]">
+      <StructuredData />
       <header className="absolute inset-x-0 top-0 z-20 border-b border-[#34505a]/55 bg-black/55 px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
           <a
@@ -37,14 +40,20 @@ export default function Home() {
             aria-label="Primary navigation"
             className="hidden items-center gap-6 text-xs font-black uppercase tracking-[0.18em] text-[#d9c39b] sm:flex"
           >
-            {["Book", "Excerpt", "Updates", "Series"].map((item) => (
+            {["Books", "Excerpt", "Updates", "Series"].map((item) => (
               <a
                 key={item}
                 className="transition hover:text-[#f3c96a]"
                 href={
                   item === "Excerpt"
                     ? "/excerpt"
-                    : `#${item === "Updates" ? "signup" : item.toLowerCase()}`
+                    : `#${
+                        item === "Updates"
+                          ? "signup"
+                          : item === "Books"
+                            ? "book"
+                            : item.toLowerCase()
+                      }`
                 }
               >
                 {item}
@@ -77,25 +86,26 @@ export default function Home() {
         <div className="mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
           <div className="max-w-3xl">
             <p className="mb-5 text-sm font-black uppercase tracking-[0.34em] text-[#d8a846]">
-              {seriesName} begins
+              Books One and Two available now
             </p>
             <h1 className="font-serif text-5xl font-semibold uppercase leading-none text-[#fff1c5] drop-shadow-[0_0_20px_rgba(216,168,70,0.22)] sm:text-7xl lg:text-8xl">
-              {bookTitle}
+              {seriesName}
             </h1>
             <p className="mt-6 font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-6xl">
               The world was never meant to breathe. When it finally does... it
               begins to break.
             </p>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d9cdb9] sm:text-xl">
-              For readers of mythic, high-stakes fantasy where old powers,
-              broken worlds, and impossible survivors collide.
+              Begin with {bookTitle}, then continue into {bookTwoTitle}. A
+              mythic dark fantasy saga where old powers, broken worlds, and
+              impossible survivors collide.
             </p>
             <div className="mt-9 flex flex-col gap-6 sm:flex-row sm:gap-8">
               <a href={amazonLink} className={primaryButton}>
-                Buy on Amazon
+                Buy Book One
               </a>
-              <a href="#signup" className={secondaryButton}>
-                Join the List
+              <a href={bookTwoAmazonLink} className={secondaryButton}>
+                Buy Book Two
               </a>
             </div>
             <nav
@@ -103,7 +113,7 @@ export default function Home() {
               className="mt-8 flex flex-wrap gap-4 text-xs font-black uppercase tracking-[0.18em] text-[#d9c39b] sm:hidden"
             >
               <a className="transition hover:text-[#f3c96a]" href="#book">
-                Book
+                Books
               </a>
               <a className="transition hover:text-[#f3c96a]" href="/excerpt">
                 Excerpt
@@ -115,13 +125,16 @@ export default function Home() {
           </div>
 
           <div className="mx-auto w-full max-w-sm lg:max-w-md">
-            <div className="stone-panel relative p-3 shadow-[0_0_60px_rgba(143,28,18,0.38)]">
+            <div className="stone-panel relative grid grid-cols-2 gap-3 p-3 shadow-[0_0_60px_rgba(143,28,18,0.38)]">
               <div className="absolute -inset-5 -z-10 bg-[#8f1c12]/20 blur-3xl" />
-              <img
-                src={bookCover}
-                alt="Book cover for The Shattered Pact"
-                className="aspect-[2/3] w-full object-cover shadow-2xl ring-1 ring-[#f3c96a]/45"
-              />
+              {series.map((book) => (
+                <img
+                  key={book.title}
+                  src={book.cover}
+                  alt={`Book cover for ${book.title}`}
+                  className="aspect-[2/3] w-full object-cover shadow-2xl ring-1 ring-[#f3c96a]/45"
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -130,26 +143,52 @@ export default function Home() {
       <OrnateDivider />
 
       <section id="book" className="stone-bg px-5 py-20 sm:px-8 lg:px-12">
-        <div className="stone-panel mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:px-8">
-          <div className="max-w-xs border border-[#34505a]/70 bg-black/40 p-2 shadow-[0_0_0_3px_rgba(0,0,0,0.55)]">
-            <img
-              src={bookCover}
-              alt="The Shattered Pact paperback cover"
-              className="aspect-[2/3] w-full object-cover shadow-xl ring-1 ring-[#f3c96a]/20"
-            />
-          </div>
-          <div>
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-3xl">
             <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
-              Book One
+              The Books
             </p>
             <h2 className="mt-4 font-serif text-3xl font-semibold uppercase text-[#fff1c5] sm:text-5xl">
-              {bookTitle}
+              Begin the saga, then follow the fracture.
             </h2>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#d9cdb9]">
-              Riven is the only one who survived something he shouldn&apos;t
-              have. As reality begins to fracture, he&apos;s pulled into a
-              conflict older than creation itself. He may not be the one meant
-              to stop it, but the reason it started.
+              The first two books of {seriesName} are available now on Amazon.
+              Start with {bookTitle}, then continue into {bookTwoTitle}.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-8 lg:grid-cols-2">
+            {series.map((book) => (
+              <article
+                key={book.title}
+                className="stone-panel grid gap-6 p-5 sm:grid-cols-[10rem_1fr] sm:p-6"
+              >
+                <img
+                  src={book.cover}
+                  alt={`${book.title} cover`}
+                  className="w-36 border border-[#34505a]/70 object-cover shadow-xl ring-1 ring-[#f3c96a]/20 sm:w-full"
+                />
+                <div>
+                  <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
+                    {book.label}
+                  </p>
+                  <h3 className="mt-3 font-serif text-3xl font-semibold text-[#fff1c5]">
+                    {book.title}
+                  </h3>
+                  <p className="mt-5 text-base leading-7 text-[#d9cdb9]">
+                    {book.description}
+                  </p>
+                  <a href={book.link} className={`${primaryButton} mt-7`}>
+                    {book.cta}
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="stone-panel mt-10 p-6 sm:p-8">
+            <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
+              For Readers Who Want
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {readerHooks.map((hook) => (
@@ -161,10 +200,34 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <a href={amazonLink} className={`${primaryButton} mt-8`}>
-              Buy on Amazon
-            </a>
           </div>
+        </div>
+      </section>
+
+      <OrnateDivider />
+
+      <section className="px-5 py-14 sm:px-8 lg:px-12">
+        <div className="stone-panel mx-auto max-w-6xl p-6 sm:p-8">
+          <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
+            Series Facts
+          </p>
+          <dl className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["Series", seriesName],
+              ["Author", authorName],
+              ["Genre", "Epic dark fantasy"],
+              ["Reading order", `${bookTitle}, then ${bookTwoTitle}`],
+            ].map(([label, value]) => (
+              <div key={label}>
+                <dt className="text-xs font-black uppercase tracking-[0.2em] text-[#8d7b62]">
+                  {label}
+                </dt>
+                <dd className="mt-2 font-serif text-xl leading-7 text-[#fff1c5]">
+                  {value}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -214,11 +277,11 @@ export default function Home() {
       <section id="signup" className="leather-bg px-5 py-20 sm:px-8 lg:px-12">
         <div className="stone-panel mx-auto max-w-4xl p-6 sm:p-10">
           <h2 className="font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
-            Get exclusive lore, release news, and saga updates
+            Get Book 3 news, exclusive lore, and saga updates
           </h2>
           <p className="mt-4 max-w-2xl leading-7 text-[#d9cdb9]">
-            Step closer to the fracture: book news, behind-the-scenes notes,
-            and updates from The Wellspring Saga.
+            Step closer to the fracture: future release news,
+            behind-the-scenes notes, and updates from The Wellspring Saga.
           </p>
 
           <NewsletterForm />
@@ -273,7 +336,7 @@ export default function Home() {
 
           <div className="stone-panel p-6 sm:p-8">
             <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
-              The Series
+              Reading Order
             </p>
             <div className="mt-6 divide-y divide-[#6e1b12]/70 border-y border-[#6e1b12]/70">
               {series.map((book) => (
@@ -294,9 +357,12 @@ export default function Home() {
                       {book.title}
                     </h3>
                   </div>
-                  <p className="text-sm font-black uppercase tracking-[0.18em] text-[#d8a846]">
-                    {book.status}
-                  </p>
+                  <a
+                    href={book.link}
+                    className="text-sm font-black uppercase tracking-[0.18em] text-[#d8a846] transition hover:text-[#fff1c5]"
+                  >
+                    {book.cta}
+                  </a>
                 </article>
               ))}
             </div>
@@ -309,18 +375,23 @@ export default function Home() {
       <section className="leather-bg px-5 pb-20 pt-14 sm:px-8 lg:px-12">
         <div className="stone-panel mx-auto max-w-6xl px-6 py-10 text-center sm:px-10">
           <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
-            Begin Book One
+            Enter the Wellspring Saga
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl font-serif text-3xl font-semibold text-[#fff1c5] sm:text-5xl">
             Enter the fracture before it spreads.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl leading-7 text-[#d9cdb9]">
-            Start {seriesName} with {bookTitle}, and watch for The Fracture of
-            Worlds soon.
+            Start {seriesName} with {bookTitle}, then continue into The
+            Fracture of Worlds.
           </p>
-          <a href={amazonLink} className={`${primaryButton} mt-8`}>
-            Buy The Shattered Pact
-          </a>
+          <div className="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
+            <a href={amazonLink} className={primaryButton}>
+              Buy Book One
+            </a>
+            <a href={bookTwoAmazonLink} className={secondaryButton}>
+              Buy Book Two
+            </a>
+          </div>
         </div>
       </section>
 

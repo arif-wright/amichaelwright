@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Inter, Marcellus_SC } from "next/font/google";
 import "./globals.css";
-import { authorName, bookTitle, heroImage } from "./site-data";
+import { authorName, heroImage, seriesName, siteDescription, siteUrl } from "./site-data";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -23,29 +23,93 @@ const marcellusSc = Marcellus_SC({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://amichaelwright.com"),
-  title: `${authorName} | ${bookTitle}`,
-  description:
-    "The official author site for A. Michael Wright and The Shattered Pact, an epic dark fantasy novel about a fractured world and the forces awakening beneath it.",
+  metadataBase: new URL(siteUrl),
+  applicationName: `${authorName} Author Site`,
+  title: `${authorName} | ${seriesName}`,
+  description: siteDescription,
+  keywords: [
+    "A. Michael Wright",
+    "The Wellspring Saga",
+    "The Shattered Pact",
+    "The Fracture of Worlds",
+    "epic fantasy books",
+    "dark fantasy books",
+    "mythic fantasy series",
+    "indie fantasy author",
+  ],
+  authors: [{ name: authorName, url: siteUrl }],
+  creator: authorName,
+  publisher: authorName,
+  category: "Books",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: [
+      {
+        url: "/images/favicon_32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/images/favicon_48.png",
+        sizes: "48x48",
+        type: "image/png",
+      },
+      {
+        url: "/images/favicon.png",
+        sizes: "1098x1098",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/images/favicon_32.png",
+    apple: [
+      {
+        url: "/images/favicon_180.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    other: [
+      {
+        rel: "icon",
+        url: "/images/favicon_512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+  },
   openGraph: {
-    title: `${bookTitle} by ${authorName}`,
-    description:
-      "An epic dark fantasy about a fractured world and the forces awakening beneath it.",
+    title: `${seriesName} by ${authorName}`,
+    description: siteDescription,
+    url: siteUrl,
+    siteName: `${authorName} | ${seriesName}`,
     type: "website",
+    locale: "en_US",
     images: [
       {
         url: heroImage,
         width: 1456,
         height: 816,
-        alt: `${bookTitle} by ${authorName}`,
+        alt: `${seriesName} by ${authorName}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${bookTitle} by ${authorName}`,
-    description:
-      "An epic dark fantasy about a fractured world and the forces awakening beneath it.",
+    title: `${seriesName} by ${authorName}`,
+    description: siteDescription,
     images: [heroImage],
   },
 };

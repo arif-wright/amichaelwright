@@ -8,11 +8,21 @@ import {
   primaryButton,
   secondaryButton,
   seriesName,
+  siteUrl,
 } from "../site-data";
 
 export const metadata: Metadata = {
   title: `Read an Excerpt from ${bookTitle} | ${authorName}`,
   description: `Read an opening excerpt from ${bookTitle}, Book One of ${seriesName}.`,
+  alternates: {
+    canonical: "/excerpt",
+  },
+  openGraph: {
+    title: `Read an Excerpt from ${bookTitle}`,
+    description: `Read the opening excerpt from ${bookTitle}, Book One of ${seriesName}.`,
+    url: `${siteUrl}/excerpt`,
+    type: "article",
+  },
 };
 
 export default function ExcerptPage() {

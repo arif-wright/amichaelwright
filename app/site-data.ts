@@ -1,4 +1,6 @@
+export const siteUrl = "https://amichaelwright.com";
 export const amazonLink = "https://www.amazon.com/dp/B0GXPLPBRY";
+export const bookTwoAmazonLink = "https://a.co/d/08fIgLrx";
 export const goodreadsLink = "https://www.goodreads.com/"; // TODO: Replace with your Goodreads author or book link.
 
 export const bookCover = "/images/Book%201.png"; // TODO: Rename/update this path if you change the cover filename in public/images.
@@ -7,8 +9,11 @@ export const heroImage = "/images/hero.png"; // TODO: Rename/update this path if
 export const authorImage = "/images/author_profile.png";
 
 export const bookTitle = "The Shattered Pact";
+export const bookTwoTitle = "The Fracture of Worlds";
 export const authorName = "A. Michael Wright";
 export const seriesName = "The Wellspring Saga";
+export const siteDescription =
+  "The official author site for A. Michael Wright and The Wellspring Saga, a mythic dark fantasy series featuring The Shattered Pact and The Fracture of Worlds.";
 
 export const readerHooks = [
   "A survivor marked by something impossible",
@@ -25,7 +30,7 @@ export const readerSignals = [
   },
   {
     title:
-      "A growing saga built around mystery, consequence, and old powers waking.",
+      "Books One and Two are available now, with the fracture spreading deeper into the saga.",
     label: seriesName,
   },
 ];
@@ -34,14 +39,28 @@ export const series = [
   {
     label: "Book 1",
     title: bookTitle,
+    description:
+      "Riven is the only one who survived something he shouldn't have. As reality begins to fracture, he's pulled into a conflict older than creation itself.",
+    shortDescription:
+      "Book One of The Wellspring Saga, an epic dark fantasy about one impossible survivor and a world beginning to break.",
     status: "Available now",
     cover: bookCover,
+    link: amazonLink,
+    cta: "Buy Book One",
+    position: 1,
   },
   {
     label: "Book 2",
-    title: "The Fracture of Worlds",
-    status: "Under KDP review",
+    title: bookTwoTitle,
+    description:
+      "The fracture widens in the second book of The Wellspring Saga, where old powers move openly and every answer carries a cost.",
+    shortDescription:
+      "Book Two of The Wellspring Saga, continuing the mythic dark fantasy saga begun in The Shattered Pact.",
+    status: "Available now",
     cover: bookTwoCover,
+    link: bookTwoAmazonLink,
+    cta: "Buy Book Two",
+    position: 2,
   },
 ];
 

@@ -1,31 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  amazonLink,
   authorName,
-  bookTitle,
-  excerptParagraphs,
+  bookTwoAmazonLink,
+  bookTwoExcerptParagraphs,
+  bookTwoTitle,
   primaryButton,
   secondaryButton,
   seriesName,
   siteUrl,
-} from "../site-data";
+} from "../../site-data";
 
 export const metadata: Metadata = {
-  title: `Read an Excerpt from ${bookTitle} | ${authorName}`,
-  description: `Read an opening excerpt from ${bookTitle}, Book One of ${seriesName}.`,
+  title: `Read an Excerpt from ${bookTwoTitle} | ${authorName}`,
+  description: `Read an opening excerpt from ${bookTwoTitle}, Book Two of ${seriesName}.`,
   alternates: {
-    canonical: "/excerpt",
+    canonical: "/excerpt/book-2",
   },
   openGraph: {
-    title: `Read an Excerpt from ${bookTitle}`,
-    description: `Read the opening excerpt from ${bookTitle}, Book One of ${seriesName}.`,
-    url: `${siteUrl}/excerpt`,
+    title: `Read an Excerpt from ${bookTwoTitle}`,
+    description: `Read the opening excerpt from ${bookTwoTitle}, Book Two of ${seriesName}.`,
+    url: `${siteUrl}/excerpt/book-2`,
     type: "article",
   },
 };
 
-export default function ExcerptPage() {
+export default function BookTwoExcerptPage() {
   return (
     <main className="site-shell min-h-screen text-[#f7ead1]">
       <header className="border-b border-[#34505a]/55 bg-black/55 px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:px-8 lg:px-12">
@@ -43,14 +43,8 @@ export default function ExcerptPage() {
             <Link className="transition hover:text-[#f3c96a]" href="/">
               Home
             </Link>
-            <Link
-              className="transition hover:text-[#f3c96a]"
-              href="/excerpt/book-2"
-            >
-              Book Two
-            </Link>
-            <Link className="transition hover:text-[#f3c96a]" href="/#signup">
-              Updates
+            <Link className="transition hover:text-[#f3c96a]" href="/excerpt">
+              Book One
             </Link>
           </nav>
         </div>
@@ -62,21 +56,24 @@ export default function ExcerptPage() {
             Chapter One Excerpt
           </p>
           <h1 className="mt-4 font-serif text-4xl font-semibold uppercase leading-tight text-[#fff1c5] sm:text-6xl">
-            {bookTitle}
+            {bookTwoTitle}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-[#d9cdb9]">
-            Book One of {seriesName}
+            Book Two of {seriesName}
           </p>
+          <h2 className="mt-10 font-serif text-2xl font-semibold uppercase tracking-[0.12em] text-[#fff1c5]">
+            The Gate That Surrendered
+          </h2>
 
-          <div className="excerpt-prose mt-12 space-y-6 text-xl leading-9 text-[#efe0c3]">
-            {excerptParagraphs.map((paragraph) => (
+          <div className="excerpt-prose mt-8 space-y-6 text-xl leading-9 text-[#efe0c3]">
+            {bookTwoExcerptParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
 
           <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:gap-8">
-            <a href={amazonLink} className={primaryButton}>
-              Buy on Amazon
+            <a href={bookTwoAmazonLink} className={primaryButton}>
+              Buy Book Two
             </a>
             <Link href="/#signup" className={secondaryButton}>
               Join the List

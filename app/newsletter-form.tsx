@@ -35,7 +35,7 @@ export default function NewsletterForm() {
 
       setEmail("");
       setFormState("success");
-      setMessage(data.message || "You're on the list.");
+      setMessage(data.message || "You're on the list. The next fracture will find you first.");
     } catch (error) {
       setFormState("error");
       setMessage(

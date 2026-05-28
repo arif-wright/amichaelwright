@@ -66,6 +66,6 @@ export async function POST(request: NextRequest) {
   }
 
   return NextResponse.json({
-    message: "You're on the list. Welcome to The Wellspring Saga.",
+    message: "You're on the list. The next fracture will find you first.",
   });
 }

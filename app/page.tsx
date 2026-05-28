@@ -4,6 +4,7 @@ import {
   authorName,
   bookTitle,
   bookTwoAmazonLink,
+  bookTwoExcerptParagraphs,
   bookTwoTitle,
   excerptParagraphs,
   goodreadsLink,
@@ -155,6 +156,9 @@ export default function Home() {
               The first two books of {seriesName} are available now on Amazon.
               Start with {bookTitle}, then continue into {bookTwoTitle}.
             </p>
+            <p className="mt-5 rune-chip inline-block px-4 py-3 text-sm font-black uppercase tracking-[0.16em] text-[#d9c39b]">
+              New to the saga? Start with {bookTitle}.
+            </p>
           </div>
 
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -168,7 +172,7 @@ export default function Home() {
                   alt={`${book.title} cover`}
                   className="w-36 border border-[#34505a]/70 object-cover shadow-xl ring-1 ring-[#f3c96a]/20 sm:w-full"
                 />
-                <div>
+                <div className="flex flex-col">
                   <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
                     {book.label}
                   </p>
@@ -178,9 +182,12 @@ export default function Home() {
                   <p className="mt-5 text-base leading-7 text-[#d9cdb9]">
                     {book.description}
                   </p>
-                  <a href={book.link} className={`${primaryButton} mt-7`}>
+                  <a href={book.link} className={`${primaryButton} mt-auto pt-7`}>
                     {book.cta}
                   </a>
+                  <p className="mt-2 text-xs font-black uppercase tracking-[0.16em] text-[#8d7b62]">
+                    {book.formatNote}
+                  </p>
                 </div>
               </article>
             ))}
@@ -261,14 +268,44 @@ export default function Home() {
           <h2 className="mt-4 font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
             Read the opening pages before you enter the fracture.
           </h2>
-          <div className="mt-8 space-y-5 text-lg leading-8 text-[#d9cdb9]">
-            {excerptParagraphs.slice(0, 2).map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {[
+              {
+                label: "Book One",
+                title: bookTitle,
+                paragraphs: excerptParagraphs.slice(0, 2),
+                href: "/excerpt",
+                cta: "Read Book One",
+              },
+              {
+                label: "Book Two",
+                title: bookTwoTitle,
+                paragraphs: bookTwoExcerptParagraphs.slice(0, 2),
+                href: "/excerpt/book-2",
+                cta: "Read Book Two",
+              },
+            ].map((sample) => (
+              <article
+                key={sample.title}
+                className="rune-chip flex flex-col px-5 py-5"
+              >
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-[#d8a846]">
+                  {sample.label}
+                </p>
+                <h3 className="mt-3 font-serif text-2xl text-[#fff1c5]">
+                  {sample.title}
+                </h3>
+                <div className="mt-5 flex-1 space-y-4 text-base leading-7 text-[#d9cdb9]">
+                  {sample.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+                <a href={sample.href} className={`${primaryButton} mt-7`}>
+                  {sample.cta}
+                </a>
+              </article>
             ))}
           </div>
-          <a href="/excerpt" className={`${primaryButton} mt-8`}>
-            Read Chapter One
-          </a>
         </div>
       </section>
 

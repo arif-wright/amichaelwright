@@ -13,11 +13,13 @@ Books:
 - Book 1: The Shattered Pact
   - Status: Available now
   - Amazon: https://www.amazon.com/dp/B0GXPLPBRY
+  - Excerpt: https://amichaelwright.com/excerpt
   - Description: Book One of The Wellspring Saga, an epic dark fantasy about one impossible survivor and a world beginning to break.
 
 - Book 2: The Fracture of Worlds
   - Status: Available now
   - Amazon: https://a.co/d/08fIgLrx
+  - Excerpt: https://amichaelwright.com/excerpt/book-2
   - Description: Book Two of The Wellspring Saga, continuing the mythic dark fantasy saga begun in The Shattered Pact.
 
 Reading order:

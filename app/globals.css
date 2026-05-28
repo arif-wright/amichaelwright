@@ -170,7 +170,7 @@ body {
 
   .stone-button-label {
     display: block;
-    transform: translateY(-0.2rem);
+    transform: translateY(-0.1rem);
   }
 
   .stone-button::before {

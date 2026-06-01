@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sendNewsletterWelcomeEmail } from "../../email";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -65,7 +66,11 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const welcomeEmail = await sendNewsletterWelcomeEmail(email);
+
   return NextResponse.json({
-    message: "You're on the list. The next fracture will find you first.",
+    message: welcomeEmail.sent
+      ? "You're on the list. Check your inbox for the first signal."
+      : "You're on the list. The next fracture will find you first.",
   });
 }

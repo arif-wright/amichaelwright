@@ -48,11 +48,13 @@ export async function sendNewsletterWelcomeEmail(email: string) {
           <p style="font-size:14px;line-height:1.6;color:#8d7b62;margin:0;">
             This confirmation was sent to ${escapedEmail}. Visit
             <a href="${siteUrl}" style="color:#d8a846;">${siteUrl}</a>.
+            To leave the list, visit
+            <a href="${siteUrl}/unsubscribe" style="color:#d8a846;">${siteUrl}/unsubscribe</a>.
           </p>
         </div>
       </div>
     `,
-    text: `You're on the list.\n\nThanks for joining ${authorName}'s reader list. You'll get release news, bonus lore, and behind-the-scenes notes from ${seriesName}.\n\nThe next fracture will find you first.\n\n${siteUrl}`,
+    text: `You're on the list.\n\nThanks for joining ${authorName}'s reader list. You'll get release news, bonus lore, and behind-the-scenes notes from ${seriesName}.\n\nThe next fracture will find you first.\n\n${siteUrl}\n\nUnsubscribe: ${siteUrl}/unsubscribe`,
   });
 
   if (error) {

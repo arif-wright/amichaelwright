@@ -1,12 +1,11 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { trackEvent } from "./analytics-tracker";
-import { primaryButton } from "./site-data";
+import { primaryButton } from "../site-data";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
-export default function NewsletterForm() {
+export default function UnsubscribeForm() {
   const [email, setEmail] = useState("");
   const [formState, setFormState] = useState<FormState>("idle");
   const [message, setMessage] = useState("");
@@ -17,15 +16,12 @@ export default function NewsletterForm() {
     setMessage("");
 
     try {
-      const response = await fetch("/api/newsletter", {
-        method: "POST",
+      const response = await fetch("/api/unsubscribe", {
+        body: JSON.stringify({ email }),
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email,
-          source: "homepage",
-        }),
+        method: "POST",
       });
 
       const data = (await response.json()) as { message?: string };
@@ -36,8 +32,7 @@ export default function NewsletterForm() {
 
       setEmail("");
       setFormState("success");
-      setMessage(data.message || "You're on the list. The next fracture will find you first.");
-      trackEvent("newsletter_signup_success");
+      setMessage(data.message || "You're unsubscribed.");
     } catch (error) {
       setFormState("error");
       setMessage(
@@ -49,15 +44,12 @@ export default function NewsletterForm() {
   }
 
   return (
-    <form
-      className="mt-8 grid gap-3 sm:grid-cols-[1fr_auto]"
-      onSubmit={handleSubmit}
-    >
-      <label htmlFor="email" className="sr-only">
+    <form className="mt-8 grid gap-3 sm:grid-cols-[1fr_auto]" onSubmit={handleSubmit}>
+      <label htmlFor="unsubscribe-email" className="sr-only">
         Email address
       </label>
       <input
-        id="email"
+        id="unsubscribe-email"
         name="email"
         type="email"
         value={email}
@@ -66,13 +58,9 @@ export default function NewsletterForm() {
         className="min-h-12 rounded-sm border border-[#6e1b12] bg-black/45 px-4 text-[#fff5d6] outline-none transition placeholder:text-[#8d7b62] focus:border-[#f3c96a] focus:ring-2 focus:ring-[#f3c96a]/35"
         required
       />
-      <button
-        type="submit"
-        className={primaryButton}
-        disabled={formState === "loading"}
-      >
+      <button type="submit" className={primaryButton} disabled={formState === "loading"}>
         <span className="stone-button-label">
-          {formState === "loading" ? "Joining..." : "Join the List"}
+          {formState === "loading" ? "Removing..." : "Unsubscribe"}
         </span>
       </button>
       {message ? (

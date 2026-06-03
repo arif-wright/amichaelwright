@@ -26,3 +26,26 @@ client-side code.
 Use a verified Resend domain for `RESEND_FROM_EMAIL` in production. The Resend
 welcome email is best-effort: signups are still saved in Supabase if email
 delivery is not configured.
+
+After changing `supabase/newsletter_signups.sql`, rerun it in the Supabase SQL
+editor. The current schema stores newsletter subscriptions, unsubscribe state,
+and anonymous site events for book/excerpt/signup conversion tracking.
+
+### End-to-End Signup Test
+
+1. Submit a real email through the homepage signup form.
+2. Confirm a row appears in `newsletter_signups`.
+3. Confirm the welcome email arrives through Resend.
+4. Click a Book One, Book Two, and excerpt link.
+5. Confirm rows appear in `site_events`.
+6. Submit the same email on `/unsubscribe`.
+7. Confirm `unsubscribed_at` is set for that email.
+
+### Search Console
+
+After deployment, add `https://amichaelwright.com` to Google Search Console and
+submit:
+
+```text
+https://amichaelwright.com/sitemap.xml
+```

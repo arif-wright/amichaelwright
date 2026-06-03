@@ -1,7 +1,8 @@
 export const siteUrl = "https://amichaelwright.com";
 export const amazonLink = "https://www.amazon.com/dp/B0GXPLPBRY";
 export const bookTwoAmazonLink = "https://a.co/d/08fIgLrx";
-export const goodreadsLink = "https://www.goodreads.com/"; // TODO: Replace with your Goodreads author or book link.
+export const goodreadsLink =
+  "https://www.goodreads.com/author/show/69868709.A_Michael_Wright";
 
 export const bookCover = "/images/Book%201.png"; // TODO: Rename/update this path if you change the cover filename in public/images.
 export const bookTwoCover = "/images/Book%202-2.png";
@@ -47,7 +48,9 @@ export const series = [
     cover: bookCover,
     link: amazonLink,
     cta: "Buy Book One",
-    formatNote: "Available on Amazon",
+    formatNote: "Kindle, paperback, and hardcover available on Amazon",
+    formats: ["Kindle", "Paperback", "Hardcover"],
+    trackEvent: "buy_book_one",
     position: 1,
   },
   {
@@ -61,7 +64,9 @@ export const series = [
     cover: bookTwoCover,
     link: bookTwoAmazonLink,
     cta: "Buy Book Two",
-    formatNote: "Available on Amazon",
+    formatNote: "Kindle and paperback available on Amazon",
+    formats: ["Kindle", "Paperback"],
+    trackEvent: "buy_book_two",
     position: 2,
   },
 ];

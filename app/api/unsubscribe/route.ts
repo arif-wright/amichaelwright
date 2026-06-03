@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sendNewsletterWelcomeEmail } from "../../email";
 import {
   getRequestMetadata,
   getSupabaseConfig,
@@ -8,25 +7,20 @@ import {
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-type NewsletterPayload = {
-  email?: string;
-  source?: string;
-};
-
 export async function POST(request: NextRequest) {
   const supabase = getSupabaseConfig();
 
   if (!supabase) {
     return NextResponse.json(
-      { message: "Newsletter signup is not configured yet." },
+      { message: "Unsubscribe is not configured yet." },
       { status: 503 }
     );
   }
 
-  let payload: NewsletterPayload;
+  let payload: { email?: string };
 
   try {
-    payload = (await request.json()) as NewsletterPayload;
+    payload = (await request.json()) as { email?: string };
   } catch {
     return NextResponse.json(
       { message: "Please enter a valid email address." },
@@ -44,17 +38,14 @@ export async function POST(request: NextRequest) {
   }
 
   const response = await fetch(
-    `${supabase.url}/rest/v1/newsletter_signups?on_conflict=email`,
+    `${supabase.url}/rest/v1/newsletter_signups?email=eq.${encodeURIComponent(
+      email
+    )}`,
     {
-      method: "POST",
-      headers: {
-        ...supabaseHeaders(supabase.serviceRoleKey),
-        Prefer: "resolution=merge-duplicates",
-      },
+      method: "PATCH",
+      headers: supabaseHeaders(supabase.serviceRoleKey),
       body: JSON.stringify({
-        email,
-        source: payload.source || "website",
-        unsubscribed_at: null,
+        unsubscribed_at: new Date().toISOString(),
         ...getRequestMetadata(request),
       }),
     }
@@ -62,16 +53,12 @@ export async function POST(request: NextRequest) {
 
   if (!response.ok) {
     return NextResponse.json(
-      { message: "Signup failed. Please try again in a moment." },
+      { message: "Unsubscribe failed. Please try again in a moment." },
       { status: 502 }
     );
   }
 
-  const welcomeEmail = await sendNewsletterWelcomeEmail(email);
-
   return NextResponse.json({
-    message: welcomeEmail.sent
-      ? "You're on the list. Check your inbox for the first signal."
-      : "You're on the list. The next fracture will find you first.",
+    message: "You're unsubscribed. The list has released your name.",
   });
 }

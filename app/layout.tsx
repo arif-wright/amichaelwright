@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cinzel, Inter, Marcellus_SC } from "next/font/google";
 import "./globals.css";
 import { authorName, heroImage, seriesName, siteDescription, siteUrl } from "./site-data";
+import AnalyticsTracker from "./analytics-tracker";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -124,6 +125,7 @@ export default function RootLayout({
       <body
         className={`${cinzel.variable} ${inter.variable} ${marcellusSc.variable} font-sans antialiased`}
       >
+        <AnalyticsTracker />
         {children}
       </body>
     </html>

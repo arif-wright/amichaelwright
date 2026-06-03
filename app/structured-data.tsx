@@ -1,6 +1,7 @@
 import {
   authorImage,
   authorName,
+  goodreadsLink,
   series,
   seriesName,
   siteDescription,
@@ -26,6 +27,7 @@ export default function StructuredData() {
       name: authorName,
       url: siteUrl,
       image: `${siteUrl}${authorImage}`,
+      sameAs: [goodreadsLink],
       jobTitle: "Author",
       description:
         "A. Michael Wright is a storyteller, designer, habitual worldbuilder, and author of The Wellspring Saga.",
@@ -73,7 +75,7 @@ export default function StructuredData() {
       position: book.position,
       inLanguage: "en-US",
       genre: ["Epic fantasy", "Dark fantasy", "Mythic fantasy"],
-      bookFormat: "https://schema.org/EBook",
+      bookFormat: book.formats,
       author: {
         "@id": `${siteUrl}/#author`,
       },

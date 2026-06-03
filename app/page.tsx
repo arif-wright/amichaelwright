@@ -102,10 +102,18 @@ export default function Home() {
               impossible survivors collide.
             </p>
             <div className="mt-9 flex flex-col gap-6 sm:flex-row sm:gap-8">
-              <a href={amazonLink} className={primaryButton}>
+              <a
+                href={amazonLink}
+                className={primaryButton}
+                data-track-event="buy_book_one"
+              >
                 <span className="stone-button-label">Buy Book One</span>
               </a>
-              <a href={bookTwoAmazonLink} className={secondaryButton}>
+              <a
+                href={bookTwoAmazonLink}
+                className={secondaryButton}
+                data-track-event="buy_book_two"
+              >
                 <span className="stone-button-label">Buy Book Two</span>
               </a>
             </div>
@@ -116,7 +124,11 @@ export default function Home() {
               <a className="transition hover:text-[#f3c96a]" href="#book">
                 Books
               </a>
-              <a className="transition hover:text-[#f3c96a]" href="/excerpt">
+              <a
+                className="transition hover:text-[#f3c96a]"
+                href="/excerpt"
+                data-track-event="read_book_one_excerpt"
+              >
                 Excerpt
               </a>
               <a className="transition hover:text-[#f3c96a]" href="#signup">
@@ -182,7 +194,11 @@ export default function Home() {
                   <p className="mt-5 text-base leading-7 text-[#d9cdb9]">
                     {book.description}
                   </p>
-                  <a href={book.link} className={`${primaryButton} mt-auto`}>
+                  <a
+                    href={book.link}
+                    className={`${primaryButton} mt-auto`}
+                    data-track-event={book.trackEvent}
+                  >
                     <span className="stone-button-label">{book.cta}</span>
                   </a>
                   <p className="mt-2 text-xs font-black uppercase tracking-[0.16em] text-[#8d7b62]">
@@ -276,6 +292,7 @@ export default function Home() {
                 paragraphs: excerptParagraphs.slice(0, 2),
                 href: "/excerpt",
                 cta: "Read Book One",
+                trackEvent: "read_book_one_excerpt",
               },
               {
                 label: "Book Two",
@@ -283,6 +300,7 @@ export default function Home() {
                 paragraphs: bookTwoExcerptParagraphs.slice(0, 2),
                 href: "/excerpt/book-2",
                 cta: "Read Book Two",
+                trackEvent: "read_book_two_excerpt",
               },
             ].map((sample) => (
               <article
@@ -300,7 +318,11 @@ export default function Home() {
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
-                <a href={sample.href} className={`${primaryButton} mt-7`}>
+                <a
+                  href={sample.href}
+                  className={`${primaryButton} mt-7`}
+                  data-track-event={sample.trackEvent}
+                >
                   <span className="stone-button-label">{sample.cta}</span>
                 </a>
               </article>
@@ -397,6 +419,7 @@ export default function Home() {
                   <a
                     href={book.link}
                     className="text-sm font-black uppercase tracking-[0.18em] text-[#d8a846] transition hover:text-[#fff1c5]"
+                    data-track-event={book.trackEvent}
                   >
                     {book.cta}
                   </a>
@@ -422,10 +445,18 @@ export default function Home() {
             Fracture of Worlds.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
-            <a href={amazonLink} className={primaryButton}>
+            <a
+              href={amazonLink}
+              className={primaryButton}
+              data-track-event="buy_book_one"
+            >
               <span className="stone-button-label">Buy Book One</span>
             </a>
-            <a href={bookTwoAmazonLink} className={secondaryButton}>
+            <a
+              href={bookTwoAmazonLink}
+              className={secondaryButton}
+              data-track-event="buy_book_two"
+            >
               <span className="stone-button-label">Buy Book Two</span>
             </a>
           </div>
@@ -436,7 +467,11 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl flex-col gap-5 text-sm text-[#8d7b62] sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} A. Michael Wright</p>
           <nav aria-label="Footer links" className="flex flex-wrap gap-5">
-            <a className="transition hover:text-[#d8a846]" href={amazonLink}>
+            <a
+              className="transition hover:text-[#d8a846]"
+              href={amazonLink}
+              data-track-event="buy_book_one"
+            >
               Amazon
             </a>
             <a className="transition hover:text-[#d8a846]" href={goodreadsLink}>
@@ -444,6 +479,12 @@ export default function Home() {
             </a>
             <a className="transition hover:text-[#d8a846]" href="#signup">
               Email signup
+            </a>
+            <a className="transition hover:text-[#d8a846]" href="/privacy">
+              Privacy
+            </a>
+            <a className="transition hover:text-[#d8a846]" href="/unsubscribe">
+              Unsubscribe
             </a>
           </nav>
         </div>

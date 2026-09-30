@@ -49,3 +49,35 @@ submit:
 ```text
 https://amichaelwright.com/sitemap.xml
 ```
+
+### Scheduled Supabase Health Check
+
+`.github/workflows/supabase-health-check.yml` reads at most one newsletter record
+ID through the Supabase Data API at 00:17, 06:17, 12:17, and 18:17 UTC each day.
+The response is discarded; the job does not change data or send emails. Failed
+requests fail the workflow, with two retries for transient HTTP/network errors
+supported by curl.
+
+To activate it:
+
+1. Add `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` as repository
+   **Settings → Secrets and variables → Actions → Repository secrets**, using
+   the same production values as the website. Use the standard Supabase project
+   URL. Keep the service role key in Secrets, never in a repository variable or
+   committed file.
+2. Merge the workflow onto the default branch (`main`).
+3. Open **Actions → Supabase health check → Run workflow** and verify that the
+   database read succeeds. Enable GitHub Actions failure notifications for your
+   account so failed checks are visible.
+
+Supabase says a few user database requests per day typically prevent free-project
+pausing, but does not guarantee a specific threshold. This job cannot resume an
+already paused project; resume it in the Supabase dashboard first.
+
+GitHub may delay scheduled jobs and automatically disables public-repository
+schedules after 60 days without repository activity. Check that the workflow
+remains enabled if this site goes unchanged for that long. To stop the checks,
+disable this workflow in GitHub Actions.
+
+References: [Supabase pausing policy](https://supabase.com/docs/guides/platform/free-project-pausing)
+and [GitHub schedule limitations](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).

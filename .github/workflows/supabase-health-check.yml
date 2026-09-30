@@ -1,0 +1,58 @@
+name: Supabase health check
+
+on:
+  schedule:
+    # Four checks per day, UTC; avoid the busy start of each hour.
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: supabase-health-check
+  cancel-in-progress: false
+
+jobs:
+  check-database:
+    # Forks must not run checks against the production database.
+    if: github.repository == 'arif-wright/amichaelwright'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Read one ID from the newsletter database
+        env:
+          SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "$SUPABASE_URL" || -z "$SUPABASE_SERVICE_ROLE_KEY" ]]; then
+            echo '::error::Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in repository Actions secrets.'
+            exit 1
+          fi
+
+          # Restrict the destination before sending the database credential.
+          if [[ ! "$SUPABASE_URL" =~ ^https://[a-z0-9]+\.supabase\.co/?$ ]]; then
+            echo '::error::NEXT_PUBLIC_SUPABASE_URL must be the standard https://<project-ref>.supabase.co project URL.'
+            exit 1
+          fi
+
+          # Query Postgres through the Data API, even when the table is empty.
+          # Discard the result so subscriber data never enters workflow logs.
+          curl --fail --silent --show-error \
+            --proto '=https' \
+            --connect-timeout 10 \
+            --max-time 20 \
+            --retry 2 \
+            --retry-delay 5 \
+            --output /dev/null \
+            --header "apikey: $SUPABASE_SERVICE_ROLE_KEY" \
+            --header "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
+            --header 'Cache-Control: no-cache' \
+            --get \
+            --data-urlencode 'select=id' \
+            --data-urlencode 'limit=1' \
+            "${SUPABASE_URL%/}/rest/v1/newsletter_signups"
+
+          echo 'Supabase database read succeeded.'

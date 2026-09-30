@@ -1,20 +1,23 @@
 export const siteUrl = "https://amichaelwright.com";
 export const amazonLink = "https://www.amazon.com/dp/B0GXPLPBRY";
 export const bookTwoAmazonLink = "https://a.co/d/08fIgLrx";
+export const bookThreeAmazonLink = "https://a.co/d/0hgvM7v6";
 export const goodreadsLink =
   "https://www.goodreads.com/author/show/69868709.A_Michael_Wright";
 
 export const bookCover = "/images/Book%201.png"; // TODO: Rename/update this path if you change the cover filename in public/images.
 export const bookTwoCover = "/images/Book%202-2.png";
+export const bookThreeCover = "/images/Book%203%20cover.png";
 export const heroImage = "/images/hero.png"; // TODO: Rename/update this path if you change the hero filename in public/images.
 export const authorImage = "/images/author_profile.png";
 
 export const bookTitle = "The Shattered Pact";
 export const bookTwoTitle = "The Fracture of Worlds";
+export const bookThreeTitle = "The Seam of Gods";
 export const authorName = "A. Michael Wright";
 export const seriesName = "The Wellspring Saga";
 export const siteDescription =
-  "The official author site for A. Michael Wright and The Wellspring Saga, a mythic dark fantasy series featuring The Shattered Pact and The Fracture of Worlds.";
+  "Explore The Wellspring Saga by A. Michael Wright. The Shattered Pact, The Fracture of Worlds, and The Seam of Gods are available now.";
 
 export const readerHooks = [
   "A survivor marked by something impossible",
@@ -31,7 +34,7 @@ export const readerSignals = [
   },
   {
     title:
-      "Books One and Two are available now, with the fracture spreading deeper into the saga.",
+      "Books One, Two, and Three are available now. Continue The Wellspring Saga with The Seam of Gods.",
     label: seriesName,
   },
 ];
@@ -68,6 +71,22 @@ export const series = [
     formats: ["Kindle", "Paperback"],
     trackEvent: "buy_book_two",
     position: 2,
+  },
+  {
+    label: "Book 3",
+    title: bookThreeTitle,
+    description:
+      "Continue The Wellspring Saga with The Seam of Gods, the third book in A. Michael Wright's mythic dark fantasy series.",
+    shortDescription:
+      "Book Three of The Wellspring Saga, following The Shattered Pact and The Fracture of Worlds.",
+    status: "Available now",
+    cover: bookThreeCover,
+    link: bookThreeAmazonLink,
+    cta: "Buy Book Three",
+    formatNote: "Kindle and paperback available on Amazon",
+    formats: ["Kindle", "Paperback"],
+    trackEvent: "buy_book_three",
+    position: 3,
   },
 ];
 

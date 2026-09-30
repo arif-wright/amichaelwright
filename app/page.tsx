@@ -3,6 +3,8 @@ import {
   authorImage,
   authorName,
   bookTitle,
+  bookThreeAmazonLink,
+  bookThreeTitle,
   bookTwoAmazonLink,
   bookTwoExcerptParagraphs,
   bookTwoTitle,
@@ -87,7 +89,7 @@ export default function Home() {
         <div className="mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
           <div className="max-w-3xl">
             <p className="mb-5 text-sm font-black uppercase tracking-[0.34em] text-[#d8a846]">
-              Books One and Two available now
+              Book Three available now
             </p>
             <h1 className="font-serif text-5xl font-semibold uppercase leading-none text-[#fff1c5] drop-shadow-[0_0_20px_rgba(216,168,70,0.22)] sm:text-7xl lg:text-8xl">
               {seriesName}
@@ -97,14 +99,21 @@ export default function Home() {
               begins to break.
             </p>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#d9cdb9] sm:text-xl">
-              Begin with {bookTitle}, then continue into {bookTwoTitle}. A
+              Begin with {bookTitle}, then continue into {bookTwoTitle} and {bookThreeTitle}. A
               mythic dark fantasy saga where old powers, broken worlds, and
               impossible survivors collide.
             </p>
-            <div className="mt-9 flex flex-col gap-6 sm:flex-row sm:gap-8">
+            <div className="mt-9 flex flex-col gap-6 sm:flex-row sm:flex-wrap sm:gap-8">
+              <a
+                href={bookThreeAmazonLink}
+                className={primaryButton}
+                data-track-event="buy_book_three"
+              >
+                <span className="stone-button-label">Buy Book Three</span>
+              </a>
               <a
                 href={amazonLink}
-                className={primaryButton}
+                className={secondaryButton}
                 data-track-event="buy_book_one"
               >
                 <span className="stone-button-label">Buy Book One</span>
@@ -137,8 +146,8 @@ export default function Home() {
             </nav>
           </div>
 
-          <div className="mx-auto w-full max-w-sm lg:max-w-md">
-            <div className="stone-panel relative grid grid-cols-2 gap-3 p-3 shadow-[0_0_60px_rgba(143,28,18,0.38)]">
+          <div className="mx-auto w-full max-w-xl">
+            <div className="stone-panel relative grid grid-cols-3 gap-2 p-3 shadow-[0_0_60px_rgba(143,28,18,0.38)] sm:gap-3">
               <div className="absolute -inset-5 -z-10 bg-[#8f1c12]/20 blur-3xl" />
               {series.map((book) => (
                 <img
@@ -165,33 +174,33 @@ export default function Home() {
               Begin the saga, then follow the fracture.
             </h2>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#d9cdb9]">
-              The first two books of {seriesName} are available now on Amazon.
-              Start with {bookTitle}, then continue into {bookTwoTitle}.
+              The first three books of {seriesName} are available now.
+              Start with {bookTitle}, then continue into {bookTwoTitle} and {bookThreeTitle}.
             </p>
             <p className="mt-5 rune-chip inline-block px-4 py-3 text-sm font-black uppercase tracking-[0.16em] text-[#d9c39b]">
               New to the saga? Start with {bookTitle}.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          <div className="mt-12 grid gap-8 lg:grid-cols-3">
             {series.map((book) => (
               <article
                 key={book.title}
-                className="stone-panel grid gap-6 p-5 sm:grid-cols-[10rem_1fr] sm:p-6"
+                className="stone-panel grid gap-6 p-5 sm:grid-cols-[10rem_1fr] sm:p-6 lg:flex lg:flex-col"
               >
                 <img
                   src={book.cover}
                   alt={`${book.title} cover`}
-                  className="w-36 border border-[#34505a]/70 object-cover shadow-xl ring-1 ring-[#f3c96a]/20 sm:w-full"
+                  className="aspect-[2/3] w-36 border border-[#34505a]/70 object-cover shadow-xl ring-1 ring-[#f3c96a]/20 sm:w-full lg:mx-auto lg:max-w-52"
                 />
-                <div className="flex flex-col">
+                <div className="flex flex-1 flex-col">
                   <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
                     {book.label}
                   </p>
                   <h3 className="mt-3 font-serif text-3xl font-semibold text-[#fff1c5]">
                     {book.title}
                   </h3>
-                  <p className="mt-5 text-base leading-7 text-[#d9cdb9]">
+                  <p className="mb-8 mt-5 text-base leading-7 text-[#d9cdb9]">
                     {book.description}
                   </p>
                   <a
@@ -239,7 +248,7 @@ export default function Home() {
               ["Series", seriesName],
               ["Author", authorName],
               ["Genre", "Epic dark fantasy"],
-              ["Reading order", `${bookTitle}, then ${bookTwoTitle}`],
+              ["Reading order", series.map((book) => book.title).join(" → ")],
             ].map(([label, value]) => (
               <div key={label}>
                 <dt className="text-xs font-black uppercase tracking-[0.2em] text-[#8d7b62]">
@@ -336,7 +345,7 @@ export default function Home() {
       <section id="signup" className="leather-bg px-5 py-20 sm:px-8 lg:px-12">
         <div className="stone-panel mx-auto max-w-4xl p-6 sm:p-10">
           <h2 className="font-serif text-3xl font-semibold text-[#fff1c5] sm:text-4xl">
-            Get Book 3 news, exclusive lore, and saga updates
+            Get release news, exclusive lore, and saga updates
           </h2>
           <p className="mt-4 max-w-2xl leading-7 text-[#d9cdb9]">
             Step closer to the fracture: future release news,
@@ -441,10 +450,10 @@ export default function Home() {
             Enter the fracture before it spreads.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl leading-7 text-[#d9cdb9]">
-            Start {seriesName} with {bookTitle}, then continue into The
-            Fracture of Worlds.
+            Start {seriesName} with {bookTitle}, then continue into {bookTwoTitle}
+            {" "}and {bookThreeTitle}.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8">
+          <div className="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row sm:flex-wrap sm:gap-8">
             <a
               href={amazonLink}
               className={primaryButton}
@@ -458,6 +467,13 @@ export default function Home() {
               data-track-event="buy_book_two"
             >
               <span className="stone-button-label">Buy Book Two</span>
+            </a>
+            <a
+              href={bookThreeAmazonLink}
+              className={primaryButton}
+              data-track-event="buy_book_three"
+            >
+              <span className="stone-button-label">Buy Book Three</span>
             </a>
           </div>
         </div>

@@ -33,6 +33,7 @@ export const metadata: Metadata = {
     "The Wellspring Saga",
     "The Shattered Pact",
     "The Fracture of Worlds",
+    "The Seam of Gods",
     "epic fantasy books",
     "dark fantasy books",
     "mythic fantasy series",

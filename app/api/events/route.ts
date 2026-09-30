@@ -8,6 +8,7 @@ import {
 const allowedEvents = new Set([
   "buy_book_one",
   "buy_book_two",
+  "buy_book_three",
   "read_book_one_excerpt",
   "read_book_two_excerpt",
   "newsletter_signup_success",

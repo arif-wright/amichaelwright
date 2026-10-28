@@ -40,7 +40,13 @@ export async function sendNewsletterWelcomeEmail(email: string) {
           </h1>
           <p style="font-size:17px;line-height:1.65;margin:0 0 18px;">
             Thanks for joining ${authorName}'s reader list. You'll get release news, bonus lore,
-            and behind-the-scenes notes from ${seriesName}.
+            and behind-the-scenes notes from ${seriesName}, about once a month.
+          </p>
+          <p style="font-size:17px;line-height:1.65;margin:0 0 18px;">
+            Start reading Book One:
+            <a href="${siteUrl}/excerpt" style="color:#d8a846;">Read the Book One preview</a>.
+            Ready to continue?
+            <a href="https://www.amazon.com/dp/B0GXH3NQNV" style="color:#d8a846;">Get Book One on Kindle</a>.
           </p>
           <p style="font-size:17px;line-height:1.65;margin:0 0 24px;">
             The next fracture will find you first.
@@ -54,7 +60,7 @@ export async function sendNewsletterWelcomeEmail(email: string) {
         </div>
       </div>
     `,
-    text: `You're on the list.\n\nThanks for joining ${authorName}'s reader list. You'll get release news, bonus lore, and behind-the-scenes notes from ${seriesName}.\n\nThe next fracture will find you first.\n\n${siteUrl}\n\nUnsubscribe: ${siteUrl}/unsubscribe`,
+    text: `You're on the list.\n\nThanks for joining ${authorName}'s reader list. You'll get release news, bonus lore, and behind-the-scenes notes from ${seriesName}, about once a month.\n\nRead the Book One preview: ${siteUrl}/excerpt\n\nGet Book One on Kindle: https://www.amazon.com/dp/B0GXH3NQNV\n\nThe next fracture will find you first.\n\n${siteUrl}\n\nUnsubscribe: ${siteUrl}/unsubscribe`,
   });
 
   if (error) {

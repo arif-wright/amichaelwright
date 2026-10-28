@@ -27,6 +27,16 @@ Use a verified Resend domain for `RESEND_FROM_EMAIL` in production. The Resend
 welcome email is best-effort: signups are still saved in Supabase if email
 delivery is not configured.
 
+Only newly inserted addresses receive the welcome. Repeated submissions do not
+change existing metadata, resend the welcome, or reactivate unsubscribed readers.
+All valid submissions receive the same generic response. There is no automatic
+delivery retry: if the provider fails after insertion, submitting again will not
+resend. The public form does not verify first-time address ownership (double
+opt-in is not implemented).
+
+Run `npm test`, `npm run typecheck`, and `npm run build` to verify changes. The
+newsletter tests use in-memory database and email boundaries and send no mail.
+
 After changing `supabase/newsletter_signups.sql`, rerun it in the Supabase SQL
 editor. The current schema stores newsletter subscriptions, unsubscribe state,
 and anonymous site events for book/excerpt/signup conversion tracking.

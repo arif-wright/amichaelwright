@@ -34,7 +34,9 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const email = payload.email?.trim().toLowerCase();
+  const email = typeof payload?.email === "string"
+    ? payload.email.trim().toLowerCase()
+    : "";
 
   if (!email || !emailPattern.test(email)) {
     return NextResponse.json(
@@ -43,22 +45,30 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const response = await fetch(
-    `${supabase.url}/rest/v1/newsletter_signups?on_conflict=email`,
-    {
-      method: "POST",
-      headers: {
-        ...supabaseHeaders(supabase.serviceRoleKey),
-        Prefer: "resolution=merge-duplicates",
-      },
-      body: JSON.stringify({
-        email,
-        source: payload.source || "website",
-        unsubscribed_at: null,
-        ...getRequestMetadata(request),
-      }),
-    }
-  );
+  let response: Response;
+
+  try {
+    response = await fetch(
+      `${supabase.url}/rest/v1/newsletter_signups?on_conflict=email&select=id`,
+      {
+        method: "POST",
+        headers: {
+          ...supabaseHeaders(supabase.serviceRoleKey),
+          Prefer: "resolution=ignore-duplicates,return=representation",
+        },
+        body: JSON.stringify({
+          email,
+          source: (typeof payload.source === "string" && payload.source) || "website",
+          ...getRequestMetadata(request),
+        }),
+      }
+    );
+  } catch {
+    return NextResponse.json(
+      { message: "Signup failed. Please try again in a moment." },
+      { status: 502 }
+    );
+  }
 
   if (!response.ok) {
     return NextResponse.json(
@@ -67,11 +77,27 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const welcomeEmail = await sendNewsletterWelcomeEmail(email);
+  // PostgREST returns only inserted IDs. Conflicts do not update metadata or
+  // unsubscribe state, even when requests for the same address race.
+  let inserted: unknown;
+  try {
+    inserted = await response.json();
+  } catch {
+    inserted = null;
+  }
+
+  if (Array.isArray(inserted) && inserted.length === 1 &&
+      typeof inserted[0]?.id === "string") {
+    try {
+      await sendNewsletterWelcomeEmail(email);
+    } catch {
+      // Saving a signup must not appear to fail if the email provider throws.
+      // Do not retry here: resubmission must never resend a welcome.
+      console.error("Newsletter welcome email failed after signup was saved.");
+    }
+  }
 
   return NextResponse.json({
-    message: welcomeEmail.sent
-      ? "You're on the list. Check your inbox for the first signal."
-      : "You're on the list. The next fracture will find you first.",
+    message: "Thanks. If this is a new signup, you're on the list. If you previously unsubscribed, your choice is unchanged.",
   });
 }

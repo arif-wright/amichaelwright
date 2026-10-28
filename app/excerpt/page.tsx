@@ -5,12 +5,12 @@ import {
   authorName,
   bookTitle,
   excerptParagraphs,
-  primaryButton,
-  secondaryButton,
   seriesName,
   siteUrl,
 } from "../site-data";
 
+import SiteHeader from "../site-header";
+import SiteFooter from "../site-footer";
 export const metadata: Metadata = {
   title: `Read an Excerpt from ${bookTitle} | ${authorName}`,
   description: `Read an opening excerpt from ${bookTitle}, Book One of ${seriesName}.`,
@@ -27,63 +27,47 @@ export const metadata: Metadata = {
 
 export default function ExcerptPage() {
   return (
-    <main className="site-shell min-h-screen text-[#f7ead1]">
-      <header className="border-b border-[#34505a]/55 bg-black/55 px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:px-8 lg:px-12">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-6">
-          <Link
-            href="/"
-            className="font-serif text-lg font-semibold uppercase tracking-[0.18em] text-[#f6d98d] transition hover:text-white"
-          >
-            {authorName}
-          </Link>
-          <nav
-            aria-label="Excerpt navigation"
-            className="flex items-center gap-5 text-xs font-black uppercase tracking-[0.18em] text-[#d9c39b]"
-          >
-            <Link className="transition hover:text-[#f3c96a]" href="/">
-              Home
-            </Link>
-            <Link
-              className="transition hover:text-[#f3c96a]"
-              href="/excerpt/book-2"
-            >
-              Book Two
-            </Link>
-            <Link className="transition hover:text-[#f3c96a]" href="/#signup">
-              Updates
-            </Link>
+    <div className="site-shell refined-site">
+      <SiteHeader />
+      <main id="main-content" tabIndex={-1} className="reading-page">
+        <div className="content-width">
+          <nav aria-label="Reading navigation" className="reading-breadcrumb">
+            <Link href="/#book">The books</Link>
+            <span aria-hidden="true">/</span>
+            <span>Book One</span>
+            <span aria-hidden="true">·</span>
+            <Link href="/excerpt/book-2">Book Two preview →</Link>
           </nav>
         </div>
-      </header>
-
-      <section className="stone-bg px-5 py-16 sm:px-8 lg:px-12">
-        <article className="stone-panel mx-auto max-w-4xl px-6 py-14 sm:px-10 lg:px-14">
-          <p className="text-sm font-black uppercase tracking-[0.3em] text-[#d8a846]">
-            Chapter One Excerpt
-          </p>
-          <h1 className="mt-4 font-serif text-4xl font-semibold uppercase leading-tight text-[#fff1c5] sm:text-6xl">
-            {bookTitle}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#d9cdb9]">
-            Book One of {seriesName}
-          </p>
-
-          <div className="excerpt-prose mt-12 space-y-6 text-xl leading-9 text-[#efe0c3]">
+        <article className="content-width reading-article">
+          <p className="eyebrow">Chapter One · An excerpt</p>
+          <h1>{bookTitle}</h1>
+          <p className="reading-subtitle">Book One of {seriesName}</p>
+          <div className="excerpt-prose">
             {excerptParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-
-          <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:gap-8">
-            <a href={amazonLink} className={primaryButton}>
-              <span className="stone-button-label">Buy on Amazon</span>
+          <div className="reading-next">
+            <p className="eyebrow">Continue the story</p>
+            <h2>Enter The Shattered Pact.</h2>
+            <a
+              href="https://www.amazon.com/dp/B0GXH3NQNV"
+              className="action-button"
+              data-track-event="buy_book_one"
+            >
+              Get Book One on Kindle ↗
             </a>
-            <Link href="/#signup" className={secondaryButton}>
-              <span className="stone-button-label">Join the List</span>
-            </Link>
+            <div className="purchase-links">
+              <a href={amazonLink} data-track-event="buy_book_one">
+                Buy the paperback ↗
+              </a>
+              <Link href="/#signup">Join the reader list →</Link>
+            </div>
           </div>
         </article>
-      </section>
-    </main>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }
